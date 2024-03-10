@@ -1,0 +1,32 @@
+- ==**Common Knowledge**==
+	- Camera IP: 192.168.0.78
+	- Camera MAC: D0:3F:27:FD:82:71
+	- Camera will only show up in wireshark if someone is connected to it, the network is still able to see it
+	- The IP you will see in wireshark is it communicating with your phone
+		- Tyler's IPhone 192.168.0.159
+	- Tyler's Kali IP is 192.158.0.143
+- ==**Reconnaissance**==
+	- Performed an Nmap scan on my phone at 9:11 PM on 3/9/24 to see what my phones ports were open to
+		- Nothing came up on a service scan and it is saying that all ports are down
+		- When performing the scan with the command "nmap 192.168.0.159 -sV -Pn" it returned the following
+			- Port 49152 is open and the service is tcpwrapped
+			- Port 62078 is open and the service is tcpwrapped
+		- Even though the camera is communicating via UDP it is still showing up that is has TCP ports open
+		- When attempting to load the webpage nothing came up with either port. 
+		- Performed a UDP scan to see the service running on the open ports and it returned
+			- Port 5353 is open|filtered and the service is zeroconf
+			- Port 8900 is open|filtered and the service is jmb-cds1
+	- Performed a scan on 192.168.0.78 while having it connected to a web interface.
+		- Port scanning it didn't return anything, including -Pn
+		- Wireshark showed it opening port 51975
+			- Scan returned that the port is open|filtered and the service is unknown
+	- Netdiscover showed that there is a secondary IP 192.168.0.78 with a different MAC address d0:3f:27:fd:82:71
+		- You are able to ping the IP given above
+		- Nmap doesn't return anything on TCP or UDP for the given IP
+	- Wireshark
+		- Protocols
+			- UDP
+-  ==**Possible attacks**== 
+	- A DOS attack is sure to work to even block the packets going to the users device
+	- Maybe a replay attack?
+	- 
