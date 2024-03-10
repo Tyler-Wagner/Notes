@@ -6,27 +6,53 @@
 		- Tyler's IPhone 192.168.0.159
 	- Tyler's Kali IP is 192.158.0.143
 - ==**Reconnaissance**==
-	- Performed an Nmap scan on my phone at 9:11 PM on 3/9/24 to see what my phones ports were open to
-		- Nothing came up on a service scan and it is saying that all ports are down
-		- When performing the scan with the command "nmap 192.168.0.159 -sV -Pn" it returned the following
-			- Port 49152 is open and the service is tcpwrapped
-			- Port 62078 is open and the service is tcpwrapped
-		- Even though the camera is communicating via UDP it is still showing up that is has TCP ports open
-		- When attempting to load the webpage nothing came up with either port. 
-		- Performed a UDP scan to see the service running on the open ports and it returned
-			- Port 5353 is open|filtered and the service is zeroconf
-			- Port 8900 is open|filtered and the service is jmb-cds1
-	- Performed a scan on 192.168.0.78 while having it connected to a web interface.
-		- Port scanning it didn't return anything, including -Pn
-		- Wireshark showed it opening port 51975
-			- Scan returned that the port is open|filtered and the service is unknown
-	- Netdiscover showed that there is a secondary IP 192.168.0.78 with a different MAC address d0:3f:27:fd:82:71
-		- You are able to ping the IP given above
-		- Nmap doesn't return anything on TCP or UDP for the given IP
-	- Wireshark
+	- <u>Nmap</u>
+		- Performed an Nmap scan on my phone at 9:11 PM on 3/9/24 to see what my phones ports were open to
+			- Nothing came up on a service scan and it is saying that all ports are down
+			- When performing the scan with the command "nmap 192.168.0.159 -sV -Pn" it returned the following
+				- Port 49152 is open and the service is tcpwrapped
+					- Opened because the app is just a webhook wrapped in an application format
+				- Port 62078 is open and the service is tcpwrapped
+					- Opened because the app is just a webhook wrapped in an application format
+			- Even though the camera is communicating via UDP it is still showing up that is has TCP ports open
+			- When attempting to load the webpage nothing came up with either port. 
+			- Performed a UDP scan to see the service running on the open ports and it returned
+				- Port 5353 is open|filtered and the service is zeroconf
+					- Read further into
+				- Port 8900 is open|filtered and the service is jmb-cds1
+					- Read further into
+		- Performed a scan on 192.168.0.78 while having it connected to a web interface.
+			- Port scanning it returned that all TCP ports are in a refused connection state
+			- UDP port scan returned 
+				- 8899/udp  open|filtered ospf-lite
+				- 51890/udp open|filtered unknown
+				- 58797/udp open|filtered unknown
+				- 58798/udp open|filtered unknown
+			- ospf-lite can be referenced in the link shown here
+				- https://www.speedguide.net/port.php?port=8899
+	- <u>NetDiscover</u>
+		- Netdiscover showed that there is a secondary IP 192.168.0.78 with a different MAC address d0:3f:27:fd:82:71
+			- You are able to ping the IP given above
+			- Nmap doesn't return anything on TCP or UDP for the given IP
+	- <u>Wireshark</u>
+		- showed it opening port 51975
 		- Protocols
 			- UDP
+			- STUN
+			- DTLSv1.2
+		- Findings
+			- Web session key in plain text
+			- Web reroute IP address in plain text
+			- Certificate in plain text
+			- Shows alerts however they are seen as encrypted
 -  ==**Possible attacks**== 
 	- A DOS attack is sure to work to even block the packets going to the users device
 	- Maybe a replay attack?
-	- 
+		- Edit the key it sends to the user and send it back to the camera and see what it does
+	- Feed Hijacking
+- ==**DOS**==
+	- Ran command "sudo hping3 192.168.0.78 -2 -p 58546 --flood"
+		- Took camera offline
+		- Can't access feed in phone app
+		- Can't access feed in web app
+		- 
