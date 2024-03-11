@@ -5,6 +5,7 @@
 	- The IP you will see in wireshark is it communicating with your phone
 		- Tyler's IPhone 192.168.0.159
 	- Tyler's Kali IP is 192.158.0.143
+	- Chrome works better for web app
 - ==**Reconnaissance**==
 	- <u>Nmap</u>
 		- Performed an Nmap scan on my phone at 9:11 PM on 3/9/24 to see what my phones ports were open to
@@ -55,4 +56,11 @@
 		- Took camera offline
 		- Can't access feed in phone app
 		- Can't access feed in web app
+- ==**BurpSuite**== 
+	- Proxy the login page returns something
+	- Cant really tell what it is
+		- Could be a handshake
+		- Could be key
 		- 
+	- Stored its output of the login to my kali desktop
+	- 
