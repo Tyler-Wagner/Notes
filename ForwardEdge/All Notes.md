@@ -1,0 +1,31 @@
+- **Daily**
+	- ==3/11/24==
+		- Needed a baseline for what the packets looked like and where the data is so I can find an entry point for breaking confidentiality
+		- Coded a python3 server on message2 and a client on message1
+			- Sends packets where I **KNOW** the message being sent
+			- This allowed me to see where the data is stored within the packet
+			- Now I can start the server up on my machine and see if I can intercept the packets or break its encryption
+			- I know the byte it starts at so *MAYBE* I can ignore everything outside of those packets and decode that and see what I come up with
+- **General**
+	- Client IP = 192.168.0.2
+	- Hub IP = 192.168.0.1
+	- The hub sends a 112 length packet to the client 1 minute prior to receiving a new key
+- **RECON**
+	- 
+- **ATTACKS**
+	- ==DOS==
+		- When you the 112 length packet is received wait 45 - 50 seconds then perform DOS attack
+		- Should mess up the key exchange and might not allow a key to come through
+	- ==Key Manipulation==
+		- 
+- **ENCRYPTION**
+	- The minimum number of characters in a message before it stops padding is 18
+		- Padding is the same exact bunch of characters for each key
+		- Since padding is the same the encryption COULD be broken that way
+- **HOW KEY MANIPULATION IS BUILT**
+	- Starting with a basic client and server file to send packets via the local host
+		- Got that to work, stored in Tools folder
+	- Starting a TCP chat client between a server and client
+		- Got it to work on a local host
+		- Got it working over a network
+	
