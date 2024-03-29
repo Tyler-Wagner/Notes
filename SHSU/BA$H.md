@@ -1,0 +1,12 @@
+- Questions
+	- What is a proper black box pentesting environment look like
+		- Scope
+		- Communication
+		- Reports
+		- etc
+	- pen testing thought process
+		- Start to finish
+	- How often do you make your own tools
+	- How often do you have to program
+	- Have you ever developed your own malware? If so how did you learn to do that
+	- 
