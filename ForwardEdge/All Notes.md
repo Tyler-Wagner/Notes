@@ -22,8 +22,15 @@
 	- Client IP = 192.168.0.2
 	- Hub IP = 192.168.0.1
 	- The hub sends a 112 length packet to the client 1 minute prior to receiving a new key
+	- sudo -i is still enabled
+		- This gives the users root access to the boards and allows them to do what ever they wanted to it
 - **RECON**
-	- 
+	- Website
+		- Turning firewall on and off opens and closes ports
+			- We aren't sure what this means entirely yet but soon to find out
+		- Found where logs are stored on the machines so those might actually be useful
+		- Changing the protocol messes some things up
+			- UDP to SCTP
 - **ATTACKS**
 	- ==DOS==
 		- When you the 112 length packet is received wait 45 - 50 seconds then perform DOS attack
@@ -36,6 +43,13 @@
 			- ICMP redirect every time I try to ssh client
 			- ICMP Redirect every time I try to ping client
 		- Still performing a normal key exchange but how much of it is normal and how much is messed up
+		- Key's and the communication between two machines is perfectly fine from what I can tell
+		- After hard reset
+			- SSH still disabled
+			- website is disabled
+			- Deleting known hosts from .ssh did not resolve the issue on my end
+		- To access 192.168.0.2 via ssh you have to tunnel from 0.1 to 0.2
+		- Must be hub's IP to access client's ssh
 - **ENCRYPTION**
 	- The minimum number of characters in a message before it stops padding is 18
 		- Padding is the same exact bunch of characters for each key
