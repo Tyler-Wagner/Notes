@@ -1,6 +1,6 @@
 - **Networking**
 	- Bad class for cyber security students
-	- Dont go over how specific things work
+	- Dont go over how specific things work in class (book may go into it)
 		- DNS
 		- DHCP
 		- HTTP
@@ -49,4 +49,4 @@
 				- Keep Programming 1 and 2 and DSA
 					- Great classes for us
 				- Look at other universities path
-					- Would allow for brainstorming of ideas for creating proper cyber security classes
+					- Would allow for brainstorming of ideas for creating a more fleshed out cyber security path
