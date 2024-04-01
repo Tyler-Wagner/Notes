@@ -1,0 +1,72 @@
+- Understanding the methods by which threat actors infiltrate networks and systems is essential for us to assess the attack surface of your network and deploy controls to block attack vectors
+- ==Attack Surface and Threat Vectors==
+	- The attack surface is all the points at which a malicious threat actor could try to exploit a vulnerability
+	- Any location or method where a threat actor can interact with a network port, app, computer, or user is part of a potential attack surface.
+	- Minimizing the attack surface means restricting access so only that a few known endpoints, protocols/ports, and services/methods are permitted.
+	- To evaluate the attacker surface, consider the attributes of threat actors that pose the most risk to your organization
+		- Attack surface of an external threat actor should be far smaller than that for an insider threat
+			- Block off as much outside access as possible. Board up the ENTIRE house, not just the windows
+	- Each part of the attack surface represents a potential vector for intrusion
+	- A *threat vector* is the path that a threat actor uses to execute a data exfiltration, service disruption or disinformation attack.
+		- Sophisticated threat actors will make use of multiple vectors
+		- Likely to plan a multistage campaign, rather than single smash and grab
+		- Highly capable threat actors will be able to develop novel vectors, meaning that the treat actors knowledge of your organization's attack surface may be better than your own.
+- ==Vulnerable Software Vectors==
+	- *Vulnerable Software* contains a flaw in its code or design that can be exploited to circumvent access control or the crash the process.
+	- Typically vulnerabilities can only be exploited in specific circumstances
+	- Due to complexity of modern software and the speed with which new versions must be released, almost no software is free from vulnerabilities.
+	- An organization might not have an effective patch management system.
+	- Large number of operating systems and applications run on a company's appliances, servers, clients and cloud networks directly increases the potential attack surface.
+		- Can be consolidated by reducing to fewer products
+	- Impact and consequences of a software vulnerability are varied.
+	- **Unsupported Systems Applications**
+		- *Unsupported systems* and applications are particular reason that vulnerably software will be exposed as a threat vector.
+		- Unsupported system is one where its vendor no longer develops updates and patches
+	- **Client-Based vs Agentless**
+		- Scanning software helps organizations to automate the discovery and classification of software vulnerabilities
+		- Tools can also be used by threat actors as a part of recon against a target
+		- Agentless scanning is most likely to be used in threat actor recon.
+- ==Network Vectors==
+	- Vulnerable software give a threat actor the opportunity to execute malicious code onto a system.
+	- The threat actor must be able to run exploit code on the system or over a network to trigger the vulnerability.
+	- Exploit technique can be considered as:
+		- Remote
+			- Means that the vulnerability can be exploited by sending code to the target over a network and does not depend on an authenticated session with the system to execute.
+		- Local
+			- Means that the exploit code must be executed from an authenticated session
+			- Could still occur over a network, but the threat actor needs to use some valid credentials or hijack an existing session to execute it
+	- To minimize risks from software vulnerabilities, administrators must reduce attack surface by eliminating unsecure networks.
+	- An *unsecure network* is one that LACKS the attributes of confidentiality, integrity, and availability.
+		- Lack of Confidentiality
+			- Threat actors are able to snoop on network traffic and recover passwords or other sensitive information
+				- Also described as eavesdropping attacks
+		- Lack of Integrity
+			- threat actors are able to attach unauthorized devices
+			- Devices can be used to:
+				- Snoop traffic
+				- Intercept and modify traffic
+				- Run spoofed services
+				- Run exploit code against other network hosts
+			- Often described as on-path attacks
+		- Lack of Availability
+			- threat actors are able to perform service disruption attacks
+			- Also called DoS attack
+				- Denial of Service
+	- A *secure* network uses an access control framework and cryptographic solutions to identify, authenticate, authorize, and audit network users, hosts and traffic
+	- Special threat actors associated with unsecure networks are as follows:
+		- Direct access
+			- Threat actor uses physical access to the site to perpetrate an attack
+		- Wired Network
+			- A threat actor with access to the site attaches an unauthorized devices to a physical network port, and the device is permitted to communicate with other hosts
+		- Remote and Wireless network
+			- Attacker either obtains credentials for a remote access or wireless connection to the network or cracks the security protocols used for authentication.
+			- Attacker spoofs a trusted recourse
+		- Cloud Access
+			- Many companies run part or all of the network services via Internet-accessible clouds.
+			- Attacker only needs to find one account, service or host with weak credentials
+		- Bluetooth network
+			- Threat actor exploits a vulnerability or misconfiguration to transmit a malicious file to a users device over bluetooth
+		- Default Credentials
+			- Attacker gains control of a network device or app because it has been left configured with a default password
+		- Open Service port
+			- Threat actor is able to establish an unauthenticated connection to a logical TCP or UDP network port

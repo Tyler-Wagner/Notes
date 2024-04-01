@@ -1,0 +1,381 @@
+- **Passive Reconnaissance**
+	- ==Intro==
+		- We use *whois* to query WHOIS records, while we use *nslookup* and *dig* to query DNS database records.
+			- The records are publicly available records which means they do not alert the target
+		- Will also learn the use of two online services
+			- DNSDumpster
+			- Shodan.io
+		- These two services allow the user to collect information about the target without directly connecting to it
+	- ==Passive vs Active Recon==
+		- Passive reconnaissance activities include many activities, for instance;
+			- Looking up DNS records of a domain from a public DNS server
+			- Checking job ads related to the target website
+			- Reading new articles about the target company
+		- Active reconnaissance cannot be achieved so discreetly.
+			- Requires direct engagement with the target.
+			- Examples of active recon include:
+				- Connecting to a company servers such as HTTP, FTP, and SMTP
+				- Calling the company in an attempt to get information (social engineering)
+				- Entering company premises pretending to be a repairman
+		- Active recon can also get you into legal trouble quickly
+	- ==Whois==
+		- is a request and response protocol that follows the RFC 3912 specification.
+		- The server listens on TCP port 43 for incoming requests.
+		- Domain registrar is responsible for maintaining the WHOIS records for the domain names and leasing's
+			- Registrar:
+				- Via which registrar was the domain name registered?
+			- Contact info of the registrant: 
+				- Name, organization, address, phone, among other things
+			- Name Server: 
+				- which server was asked to resolve the domain name
+		- To get this information, we need to use a whois client or an online service
+	- ==nslookup and dig==
+		- Previously we were able to get the DNS server from the registrar
+		- Find the IP address of a domain name using nslookup
+			- Stands for name server look up
+		- Issue the command *nslookup <domain_name>*
+	- ==DNSDumpster==
+		- DNS lookup tools, such as nslookup and dig, cannot find subdomains on their own.
+		- The domain you are inspecting might include a different subdomain that can reveal much information about the target.
+		- We can consider using multiple search engines to compile a list of publicly known subdomains.
+		- One search engine won't be enough; moreover, we should expect to go through atleast tens of results to find interesting data.
+		- To avoid such a time consuming search, we can use an online service that offers detailed answers to DNS queries, such as DNSDumpter.
+	- ==Shodan.io==
+		- Can be helpful to learn various pieces of information about the client's network, without actively connecting to it
+		- Can be used to learn about connected and exposed devices belonging to your organization
+		- Tries to connect to every device reachable online to build a search engine of connected "things" in contrast with a search engine for webpages.
+- **Active Reconnaissance**
+	- ==Intro==
+		- Focusing on active reconnaissance and the essentials tools related to it.
+		- Passive reconnaissance lets you gather information about your target without any kind of direct engagement or connection.
+		- Active reconnaissance requires you to make some kind of contact with your target
+			- This contact can be a phone call or visit to the target company.
+			- Can also be a direct connection to the target system
+		- Think of Active recon as you are closely inspecting windows and door locks
+		- Essential to remember not to engage in active reconnaissance work before getting signed legal authorization from the client.
+	- ==Web Browser==
+		- can be a coinvent tool, especially that is is readily available on all systems
+		- Several ways where you can use a web browser to gather information about a target
+		- On the transport level the browser connects to
+			- TCP port 80 by default when the website is HTTP
+			- TCP port 443 by default when the website is HTTPS
+		- Since 80 and 443 are common ports they are not seen in the browser, however it is possible to use custom ports to access a service. 
+		- While browsing a web page you can press Ctrl+Shift+I on a PC to open the Developer tools on Firefox.
+		- There are also many plugins to firefox and chrome that help with pen testing
+			- FroxyProxy
+				- Allows you to change the proxy server you are using to access the target website, helps when you are using BurpSuite
+			- User-Agent Switcher and Manager
+				- Gives you the ability to pretend to be accessing the webpage from a different operating system or different web browser 
+			- Wappalyzer
+				- Provides insights about the technologies used on the visited websites
+	- ==Ping==
+		- Should remind you of the game ping pong
+		-  Primary purpose of ping is to check whether you can reach the remote system and that the remote system can reach you back.
+		- Initially this was used to check the network connectivity; however we are more interested in its different uses
+		- In simple terms ping commands sends a packet to a remote system, and the remote system replies
+		- Picker definition: The ping is a command that sends an ICMP Echo packer to a remote system. If the remote system is online, and the ping packet was correctly routed and not blocked by any firewall, the remote system should send back and ICMP Echo Reply.
+		- Objective of ping is to ensure that the target system is online before we spend time carrying out more detailed scans to discover the running operating system and services
+		- ICMP = Internet Control Message Protocol
+			- Supports many different types of queries, but, in particular, we are interested in ping and ping reply
+	- ==Traceroute==
+		- the traceroute command traces the route taken by the packets from your system to another host.
+		- The purpose of a traceroute is to find the IP addresses of the routers or hops that a packet traverses as it goes from your system to a target host.
+		- It is helpful as it indicated the amount of hops between your system and the target host
+		- Tries to discover the routers across the path from your system to the target system.
+		- There is no direct way to discover the path from your system to a target system.
+			- Rely on ICMP to trick the routers into revealing their IP addresses
+			- This can be accomplished by using a small Time to Live in the IP header field.
+				- TTL indicated the maximum number of routers/hops that a packet can pass through before being dropped
+	- ==telnet==
+		- The TELNET (Teletype Network) protocol was developed in 1969 to communicate with a remote system via a CLI.
+		- telnet uses the TELNET protocol for remote administration. 
+			- default port is 23
+		- From a security perspective, telnet sends all the data, including usernames and passwords, in clear text. 
+		- Can use Telnet to connect to any service and grab its banner. 
+		- Lets say we want to discover more information about a webserver listening on Port 80. 
+			- We connect to port 80 and then we communicate using the HTTP protocol
+			- use the command GET / HTTP/1.1
+			- hit enter twice
+	- ==netcat==
+		- Supports both TCP and UDP protocols
+		- Can function as a client that connects to a listening port
+		- Can act as a server listening on a port of your choice
+- **NMAP**
+	- ==Introduction==
+		- Present different approaches that Nmap uses to discover live hosts
+			- ARP scan
+				- Uses ARP requests to discover live hosts
+			- ICMP scan
+				- Uses ICMP requests to discover live hosts
+			- TCP/UDP ping scan
+				- Sends packets to TCP ports and UDP ports to determine live hosts
+		- Introduce two scanners
+			- arp-scan
+			- masscan
+		- Nmap was created by Gordon Lyon
+			- Network security expert and open source programmer
+		- Nmap is used for
+			- Mapping networks
+			- identifying live hosts
+			- discovering running services
+		- Nmap scripting engine can further extend its functionality
+			- Fingerprinting services
+			- Exploiting vulnerabilities
+		- Nmap scans go through the below steps (many are optional depending on arguments provided)
+			- Enumerate Targets
+			- Discover live hosts
+			- Reverse DNS lookup
+			- Scan ports
+			- Detect versions
+			- Detect OS
+			- Traceroute
+			- Scripts
+			- Write output
+	- ==Subnetworks==
+		- A *network segment* is a group of computers connected using a shared medium.
+			- the medium can be Ethernet switch or WIFI access point.
+		- In an IP network, a *subnetwork* is usually the equivalent of one or more network segments connected together and configured to use the same router
+		- The network segment refers to a **physical** connection while a subnetwork refers to a **logical** connection
+		- A subnet has its own IP address range and is connected to a more extensive network via a router.
+			- There might be a firewall enforcing security
+		- Subnets with /16 means the subnet mask can be written as 255.255.0.0
+			- can have around 65 thousand hosts
+		- Subnets with /24 means the subnet mask can be written as 255.255.255.0
+			- can have around 250 thousand hosts
+		- As part of reconnaissance, we want to discover more information about a group of hosts or about a subnet.
+		- If you are on the same subnet you would expect to rely on ARP (Address Resolution Protocol) queries to discover live hosts.
+			- ARP aims to get the hardware address (MAC) so that communication over the link-layer becomes possible. 
+	- ==Enumerating Targets==
+		- Before explaining each scanning method in detail and put it against a live target, we need to specify the targets we want to scan.
+		- Generally you can provide:
+			- List
+				- <Machine_IP> scanme.nmap.org example.com
+					- Will scan 3 IP addresses
+			- Range
+				- 10.11.12.15-20
+					- Will scan 6 IP addresses
+			- subnet
+				- <MACHINE_IP>/30 will scan 4 IP addresses
+		- Can also provide a file as input for list of targets
+			- nmap -iL <file_name>
+		- If you want to check the list of hosts NMAP will scan use the below command. This option will give you a detailed list of hosts Nmap will scan without scanning them
+			- nmap -sL TARGETS
+			- Command will attempt a reverse-DNS resolution on all the targets to obtain their names
+	- ==Discovering Live Hosts==
+		- Revisit TCP/IP layers
+			- ARP from Link Layer
+			- ICMP from Network Layer
+			- TCP from Transport Layer
+			- UDP from Transport Layer
+		- Before how scanners work is mentioned in detail, review the 4 protocols
+			- **ARP** has one purpose, sending a frame to the broadcast address on the network segment and asking the computer with a specific IP address to respond by providing its MAC address
+			- **ICMP** has many types. ICMP ping uses tyle 8 echo and type 0 echo reply
+			- Although TCP and UDP are transport layers, for networking scanning purposes, a scanner can send a specially crafted packet to common TCP or UDP ports to check whether the target will respond. This method is efficient, especially when ICMP is blocked.
+	- ==Nmap Host Discovery Using ARP==
+		- It is essential to avoid wasting our time port-scanning an offline host or an IP Address not in use.
+		- When no host discovery options are provided, Nmap follows the following approaches to discover live hosts
+			- When a *privileged* user tries to scan targets on a local network, Nmap uses ARP requests.
+			- When a *privileged* user tries to scan targets outside the network, Nmap uses ICMP echo requests, TCP ACK to port 80, TCP SYN to port 443 and ICMP timestamp request.
+			- When an *unprivileged* user tries to scan targets outside the local network, Nmap resorts to a 3 way handshake by sending SYN packets to ports 80 and 443
+		- Nmap, by default, uses a ping scan to find live hosts, then proceeds to scan live hosts only.
+		- ARP scanning is possible only if you are on the same subnet as the target systems.
+			- Expect to see many ARP queries generated during a Nmap scan of a local network.
+		- There is a scanner built around sending ARP queries
+			- arp-scan
+				- provides many options to customize your scan
+	- ==Nmap Host Discovery using ICMP==
+		- Could ping every IP address on a target network, since this is the most straight forward approach, it is not always reliable.
+		- Many firewalls block ICMP echo, newer versions of MS windows come with that enabled
+		- ICMP echo scan works by sending an ICMP echo request and expect the target to reply with an ICMP echo reply, if it is online.
+	- ==Nmap Host Discovery using TCP/UDP==
+		- This is the one you use all the time.
+- Nmap Basic Port Scans
+	- ==Introduction==
+		- Checking which ports are open and listening and which ports are closed
+		- Explains
+			- TCP connect port scans
+			- TCP SYN Port scans
+			- UDP port scans
+	- ==TCP and UDP ports==
+		- IP address specifies a host on a network among many others, a TCP or UDP port is used to identify a network signature running on that host.
+		- A port is usually linked to a service using that specific port number
+			- No more than one service can be used per port
+		- Ports can be in two states (***SIMPLIFIED***)
+			- Open
+				- Indicates that there is some service listening on that port
+			- Closed
+				- indicates there is no service listening on that port
+		- Ports can be in six states (***PRACTICAL***)
+			- Open
+				- A service is listening on the specified port
+			- Closed
+				- No service is listening on the specified port, even though the port is accessible.
+			- Filtered
+				- nmap cannot determine if the port is open or closed because the port is NOT accessible.
+			- Unfiltered
+				- Nmap cannot determine if the port is open or closed, although the port is accessible
+				- Encountered when doing an ACK scan
+			- Open|Filtered
+				- Nmap cannot determine whether the port is open or filtered
+			- Closed|Filtered
+				- Nmap cannot determine whether the port is closed or filtered
+	- ==TCP Flags==
+		- Nmap supports different types of TCP port scans.
+		- To understand the difference between these port scans, we need to review the TCP header (https://www.geeksforgeeks.org/tcp-ip-packet-format/).
+			- First 24 bytes is the header
+			- First row consists of the TCP Port number and destination port number.
+				- Port number allocated to 16 bits (2 bytes)
+			- Second and third rows consist of the sequence number and acknowledgement number
+				- Each row has 32 bits (4 bytes)
+				- 6 rows total
+					- 24 bytes
+		- Need to focus on the flags nmap can set or unset
+			- URG
+				- Urgent flag
+				- Indicates that the urgent pointer field is significant.
+				- Indicated the incoming data is urgent and that a TCP segment with the URG flag set is processed immediately without having to wait on previously sent TCP segments
+			- ACK
+				- Acknowledgement flag
+				- Indicates that the acknowledgement number is significant
+				- Used to acknowledge the receipt of a TCP segment
+			- PSH
+				- Push flag
+				- Asks TCP to pass the data to the application promptly
+			- RST
+				- Reset flag
+				- Used to reset the connection
+				- Firewall might tear a TCP connection
+				- Flag is also used when data is sent to a host and there is no service on the receiving end to answer
+			- SYN
+				- Synchronize flag
+				- Used to indicate a 3 way handshake
+				- Sequence numbers should be set randomly during TCP connection establishment
+			- FIN
+				- Sender has no more data to send
+	- ==TCP Connect Scan==
+		- Works by completing the TCP 3 way handshake
+		- If you are not root, TCP connect scan is the only possible option to discover open TCP ports
+	- ==TCP SYN Scan==
+		- The default scan mode is SYN scan
+			- Requires you to be root to run
+		- Does not need to complete the TCP 3-way handshake
+		- It tears down the connection once it receives a response from the server
+		- Decreases the changes of the scan being logged
+		- Default scan when running Nmap as a privileged user
+	- ==UDP Scan==
+		- UDP is a connectionless protocol
+		- Cannot guarantee that a service is listening on a UDP port and that it would respond to our packets.
+		- If a UDP packet is sent to a closed port and ICMP port unreachable is returned
+	- ==Fine Tuning Scope and Performance==
+		- You can specify ports you want to scan instead of the default 1000 ports
+		- Can request the scan of all ports which will scan all 65535 ports
+		- Can control the scan timing 0-5 where 0 is the slowest and 5 is the fastest
+			- paranoid (0)
+			- sneaky (1)
+			- polite (2)
+			- normal (3)
+			- aggressive (4)
+			- insane (5)
+			- To avoid IDS consider 0 or 1
+			- Nmap uses 3 by default
+			- 5 can effect the accuracy of the results
+		- Can chose the packet rate using --min-rate and --max-rate
+		- Can control probing parallelization using --min-parallelism and --max-parallelism
+		- Nmap probes the tartest to discover which hosts are live and which ports are open
+		- Probing parallelization specifies the number of such probes that can be ran in parallel
+- **Nmap Advanced Port Scans**
+	- ==Introduction==
+		- Security researchers and hackers contemplated the TCP flags. They wanted to know what would happen if we sent a TCP packet, which is not part of any ongoing TCP connection, with one or more flags set.
+		- Go over more more advanced scans Nmap can do, such as
+			- Null Scan
+			- FIN Scan
+			- Xmas Scan
+			- ACK Scan
+			- Window Scan
+			- Custom Scan
+		- Cover the following
+			- Spoofing IP
+			- Spoofing MAC
+			- Decoy Scan
+			- Fragmented Packets
+			- Idle/Zombie Scan
+	- ==TCP Null Scan, FIN Scan and Xmas Scan==
+		- Null Scan
+			- Does not set any flag, all flag bits are set to zero
+			- A TCP packet with no flags set will ***NOT*** trigger any response when it reaches an open port
+				- Nmap will consider the port open or a firewall is blocking it
+				- Expecting the target to respond with RST if the port is closed
+					- Can use lack of RST response to figure out the ports that are not closed, open or filtered
+		- FIN Scan
+			- Sends a TCP packet with the FIN flag set
+			- No response will be sent back if the TCP port is open
+				- Target should respond with RST if the port is closed
+					- Some firewall will drop the traffic without sending an RST
+		- Xmas Scan
+			- Sets the FIN, PSH, and URG flags simultaneously
+			- If RST is received then the port is closed, otherwise it is open|filtered
+	- ==TCP Maimon Scan==
+		- Uriel Maimon first described the scan back in 1996
+		- FIN and ACK bits are set
+		- Target should send RST packet as a response
+			- Certain BSD drop the packet if it is an open port exposing the open ports
+		- Won't work on most targets encountered in modern networks
+		- Most targeted systems will respond with an RST packet regardless of whether or not the TCP port is open
+	- ==TCP ACK, Window and Custom Scan==
+		- TCP ACK Scan
+			- An ACK scan will send a TCP packet with the ACK flag set
+			- Target will respond wo the ACK with RST regardless of the state of the port
+			- Happens because a TCP packet with the ACK flag set should be sent only in response to a received TCP packet to acknowledge the receipt of some data
+			- Scan will not tell us whether the target port is open
+			- Will be helpful if there is a firewall infront of the target
+				- Useful to discover firewall rule sets and configuration
+		- Window Scan
+			- Almost the same as the ACK Scan
+				- Examines the TCP Window field of the RST packets returned
+			- On specific systems this can reveal that the port is open
+			- If there is no firewall there is little to no information
+			- More results if there is a firewall infront of it
+		- Custom Scan
+			- Can modify your own scan types using --scanflags
+	- ==Spoofing and Decoys==
+		- Can scan a target using a spoofed IP address and even a spoofed MAC address
+			- only beneficial in a situation where you can guarantee to capture the response
+			- Scan results can be unreliable unless you can get the results
+		- Scanning with a spoofed IP address is 3 steps:
+			- Attacker sends a packet with a spoofed source UIP address to the target machine
+			- Target machine replies to the spoofed IP address as the destination
+			- Attacker captures the replies to figure out open ports
+		- Expected to specify the network interface and disable ping scan
+			- Telling nmap what interface to use and to not expect to receive a ping reply
+		- When on the same subnet as the target machine, you can spoof your MAC address aswell using --spoof-mac
+		- Only possible if the attacker and target are on the same network
+		- Only works in a minimal number of cases where certain conditions are met.
+		- Attacker might resort to using decoys to make it more challenging to be pinpointed.
+	- ==Fragmented Packets==
+		- Firewall
+			- is a piece of software or hardware that permits packets to pass through or blocks them.
+			- Functions based off of rules, summarized as blocking all traffic with exceptions or allowing all traffic with exceptions.
+		- IDS
+			- Inspects network packets for select behavioral patterns or specific content signatures.
+			- Raises an alert whenever a malicious rule is met.
+			- Inspects IP header and transport layer aswell as data layer
+		- Fragmented Packets
+			- Nmap provides a way to fragment packets
+			- Once chosen the IP data will be divided into 8 bytes or less
+				- adding more fragments will increase it exponentially
+	- ==Idle/Zombie Scan==
+		- Spoofing the source IP can be good if you want to be stealthy.
+		- The Idle scan requires and idle system connected to the network that you can communicate with.
+		- Nmap will make each probe look like it is coming from the idle host then will check for indicators whether the idle host received any response to the spoofed probe.
+		- Requires the following three steps to discover if a port is open
+			- Trigger the idle host to respond so that you can record the current IP ID on the idle host
+			- Send a SYN packet to a TCP port on the target. Packet should be spoofed to appear as if it was coming from the idle host.
+			- Trigger the idle machine again to respond so that you can compare the IP ID with the one received earlier.
+		- The attacker will send a SYN packet to the TCP port they want to check on the target machine in the next step. However, this packet will use the idle host IP address as the source. 
+		- Could result in three scenarios:
+			- The TCP port is closed; the target machine responds to the idle host with an RST packet. Idle host does not respond so IP ID does not increase.
+			- TCP port is open, the target machine responds with a SYN/ACK to the idle host. Idle host responds to this unexpected packet with RST which increases the IP ID.
+			- Target machine does not respond at all due to firewall rules. This lack of response will lead to the same results as with the closed port. The idle host will not increase IP ID
+	- ==Getting more details==
+		- Might consider adding --reason for Nmap to provide more details regarding its reasoning and conclusions
+		- Providing the flag gives us the explicit reason why Nmap concluded that the system is up or a particular port is open.

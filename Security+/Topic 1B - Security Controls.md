@@ -1,0 +1,73 @@
+- **Security Control Categories**
+	- IT frameworks can shape company policies and provide checklists of procedures, activities and technologies
+	- These procedures, activities and tools can be referred to as security controls
+	- Security control is designed to give a system or data asset the properties of the CIA triad
+	- Security controls can be divided into 4 broad categories
+		- Managerial
+			- Gives oversight of the system
+		- Operational
+			- Policy implemented by people
+		- Technical
+			- Policy implemented by a system
+		- Physical
+			- Detect and deter access to premises and hardware
+- **Security control functional types**
+	- Security controls can be defined by the function it performs
+		- Preventative
+			- Acts to eliminate or reduce the likelihood an attack can succeed
+		- Detective
+			- may not prevent or deter access but will identify and record an attempted or successful intrusion
+		- Corrective
+			- eliminates or reduces the impact of a security policy violation
+	- While most controls can be classified into the above, a few other types can define other cases
+		- Directive
+			- Enforces a rule or behavior, such as policy, best practice standard or standard operation procedure
+		- Deterrent
+			- May not physically or logically prevent access, but psychologically discourages an attacker from attempting an intrusion
+		- Compensating
+			- Substitute for principal control, as recommended by a security standard and affords the same level of protection
+- **Information Security Roles and Responsibilities**
+	- A security policy is a formalized statement that defines how security will be implemented within an organization
+	- As part of the process of adopting an effective security posture, employees must be aware of their responsibilities
+	- overall responsibility for IT lies with a chief information officer
+		- Might also be directly responsible for security
+	- in larger organizations, those who are responsible for security may get their own department
+	- Managers may have responsibility for a domain
+	- Technical and specialist staff have a responsibility for implementing, maintaining and monitoring policy
+	- Non technical staff have the responsibility of complying with policy and with relevant legislation
+- **Information Security Competencies**
+	- IT professionals working in a role with security responsibilities must be competent in a wide range of disciplines
+	- The below activities may be typical of such a role
+		- Participate in risk assessments and testing of security systems
+		- Specify, source, install and configure secure devices and software
+		- Setup and maintain document access control
+		- Monitor audit logs, review user privileges and document access controls
+		- Manage security related incident response and reporting
+		- Create and test business continuity
+		- Participate in security training
+- **Information Security Business Units**
+	- Security Operations Center
+		- A security operations center isa  location where security professionals monitor and protect critical assets
+	- DevSecOps
+		- Development and operations is a cultural shift within an organization to encourage collaboration between developers and system admins
+		- IT personnel and developers can build, test, and release software faster and more reliable
+		- DevSecOps extends DevOps to security personnel
+			- Reflects security is a primary concern at every stage
+			- Shows security experts must be embedded into any development project
+	- Incident Response
+		- Single point of contact for the notification of security incidents
+- **Review**
+	- 1) You have implemented a secure web gateway that blocks access to a social networking site. How would you classify this kind of security control?
+		- Technical Type
+	- 2) A company has installed motion activated floodlights on its property. What kind of classification and functionality is this security control?
+		- Physical: Flood lights
+		- Deterrent: Scares people away if they aren't supposed to be there
+		- Detecting: Automatically detects people/ motion
+	- 3) A firewall appliance intercepts a packet that violates policy. It automatically updates its access control list to block all further packets from the source IP. What TWO functions did the security control perform?
+		- Preventative and Corrective
+	- 4) If a security control is described as operational and compensating, what can you determine about its nature and function?
+		- Enforced by a person, developed to replicate the functionality of a primary control
+	- 5) A multinational company manages a lot of intellectual property data plus personal data for its users. What type of business unit can be used to manage this?
+		- SOC
+	- 6) A business is expanding rapidly and the owner is worried about tensions between its established IT and programming divisions. What type of security business unit or function could help resolve this issue?
+		- DevSecOps

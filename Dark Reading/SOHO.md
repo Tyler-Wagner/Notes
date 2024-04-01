@@ -1,0 +1,81 @@
+- **General Understanding**
+	- Faceless is the group
+	- TheMoon is the malware
+- **Original Document**
+	- Stands for small home and office
+		- They have been hijacked to make bot nets since the rise of WFH and COVID
+	- TheMoon (malware) is used by Faceless, who hosts it/ wrote the malware
+		- Amassed bot nets from across 88 countries to operate Faceless
+	- bot net service called faceless
+	- Supposedly being used to steal data and information about the victims in the financial sector
+	- Serious threat not only to the owners of the compromised SOHO devices but also the victims exploited through this anonymous proxy network
+	- Endpoints that TheMoon looks to bring to the dark side are somewhat sitting ducks
+	- IoT are made to be set it and forget it
+		- Made to be unmanaged and more than likely not updated
+	- Much bigger issue for enterprises than consumers
+	- Operators of IoT devices are often cost centers
+	- There is an incentive to not replace equipment unless it isn't functional anymore
+	- Enterprises offer a vast fleet of IoT devices
+		- This makes them an amazing target for TheMoon
+- **Lumen Article**
+	- ==Summary==
+		- TheMoon malware targets small home/small office routers and IoT devices
+		- TheMoon originally emerged in 2014, has been operating quietly while growing to over 40,000 bots
+		- TheMoon allows Faceless to grow at a rate of 7000 users per week
+		- Targeted 6000 ASUS routers in less than 72 hours
+		- Faceless is an ideal choice for those who want anonymity
+		- Has been used by operators of botnets such as SolarMarker and IcedID
+	- ==Intro==
+		- TheMoon was originally thought to be rendered inert
+		- Targets devices that are EoL
+		- Faceless rose from the ashes of iSocks
+		- TheMoon is the primary supplier of bots to the Faceless proxy service
+	- ==Malware Analysis==
+		- Infection begins with a light weight loader file
+			- Checks for /bin/bash, /bin/ash, /bin/sh
+				- If none of those are found the malware ceases
+			- If one is found it will decrypt, drop and execute the next stage payload ".nttpd"
+				- .nttpd checks for the presence of a shell
+			- Next it looks for the file .nttpd.pid
+				- if that isn't found it creates the file and writes the processes and pid along with hardcoded version 26
+			- If it exists it will open the file and if the version is newer than 26 it will kill all of the processes named .nttpd.pid
+			- It then proceeds to set up IPTables rules (I hate IPTables)
+				- INPUT -p tcp –dport 8080 -j DROP
+				- INPUT -p tcp –dport 80 -j DROP
+				- INPUT -s 91.215.158.0/24 -j ACCEPT
+				- INPUT -s 195.3.144.0/24 -j ACCEPT
+				- INPUT -s 185.246.128.0/24 -j ACCEPT
+			- After the rules are created it sets up a thread to contact an NTP server from a list of legitimate NTP servers
+				- Likely using NTP as a mechanism to ensure the infected device has internet connectivity
+					- *if that is the case then why dont they just ping something like google or 8.8.8.8?*
+			- After it attempts to cycle through a set of hard-coded IP addresses, establish a connection on port 15194 and send a hardcoded packet on port 16194
+				- both ports are unassigned according to speedguide.net
+				- The packet is a check in, basically to say the connection was successful
+			- C2 may respond with a packet that gives a specific filename and location from which it can be retrieved.
+			- Infected device requests and downloads the corresponding ELF executable
+				- Two modules discovered, one is a worm and the other is named .sox which is used to proxy traffic from the bot to the internet on behalf of the user
+	- ==Worm Module==
+		- To obtain this module it will send another file, .scz, that will decrypt, drop and execute an additional file, .scn
+		- The .scn executable will attempt to spread itself by scanning an IP block supplied by the C2 in search for vulnerable web servers on ports 80 and 8080
+			- If it finds anything it will try to execute the file as .nttpd using a series of echo calls
+	- ==.sox file==
+		- Once this is executed on the system it begins by checking the shell
+		- It confirms it is running the most current version of the software
+			- if not it will stop and find the latest version
+		- Has the ability to embed functionality to modify iptables
+			- allows malware to open ports and download more things
+		- Checks for .sox.twn
+			- not found the .sox file attempts to contact a hard-coded IP address in the file
+				- IP addresses did not seem to respond and are decoys
+	- ==Update C2 and Clean-Up==
+		- Can occasionally respond with a handful of other files
+			- .soxT
+				- Bash script that writes the binary file /tmp/sox.twn
+				- Used to update the C2 server for the Faceless proxy
+			- soxP
+				- Clean up and host based evasion by removing threat actor-dropped files from disk
+	- ==Overlap between TheMoon and Faceless==
+		- Highly significant statistical overlap between TheMoon and Faceless
+		- 10 day period, about 80% of bots that talk to Faceless C2's were also seen talking to TheMoon C2
+			- 90% overlap between the two
+		- 

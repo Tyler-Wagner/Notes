@@ -1,0 +1,52 @@
+- **Networking**
+	- Bad class for cyber security students
+	- Dont go over how specific things work in class (book may go into it)
+		- DNS
+		- DHCP
+		- HTTP
+			- GET
+			- HEAD
+			- POST
+			- PUT
+			- DELETE
+			- CONNECT
+			- OPTIONS
+			- TRACE
+			- PATCH
+	- Really go over the TCP/IP stack
+	- Never go over the OSINT model
+	- Never go over Firewalls or how they operate
+	- ==Solution==
+		- Break the classes up
+		- Have a cyber based one and a CS based one
+		- Cyber should have Intro to networking 1 and 2
+			- Network theory is a copy and paste of of Intro to computer networking
+- **Whole of Cyber security**
+	- Classes we take
+		- Building blocks make no sense
+			- Go from DF to Cyber
+			- Forces the Senior level cyber classes to be taught as intro classes
+			- Professors end up speeding through the material to get to teach what they want to teach
+			- Different professors teach the classes differently
+				- Example
+					- Burris Crypto VS Karpoor Crypto
+				- ==solution== 
+					- Force a curriculum on the professors that they have to follow
+					- Stop with the no student left behind mindset
+						- Passing students who do not understand lowers the quality of the higher level courses
+		- Move away from DF
+			- Understand the cyber degree is much newer to the university
+			- Move away from DF classes
+				- Introduce DF Tools
+					- Can be used to teach students DF and the process
+				- DF 1 and 2 moved to IA 1 and 2
+				- Do intro to pentest 1 and 2
+					- I already do intro to pentest on the side and have many students come to it
+				- Intro to hardening/blue teaming 1 and 2
+				- Culminate this into a senior classes such as cyber warfare and infosec where we can do proper red vs blue
+				- Introduce a way for Cyber students can focus mainly on the security side of software engineering for the class
+					- Maybe have it where atleast 1 cyber student is in a group and their job is to make sure that the program is as secure as they can make it
+				- Keep Programming 1 and 2 and DSA
+					- Great classes for us
+				- Look at other universities path
+					- Would allow for brainstorming of ideas for creating a more fleshed out cyber security path
