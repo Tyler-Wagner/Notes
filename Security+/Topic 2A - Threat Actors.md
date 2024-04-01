@@ -1,0 +1,103 @@
+- ==Vulnerability, Threat, and Risk==
+	- Security teams must identify ways their systems could be attacked.
+	- Assessments could involve
+		- Vulnerability
+			- A weakness that could be triggered accidently or exploited intentionally to cause a security breach
+			- Factors such as the value of the vulnerable asset and the ease of exploiting the fault determine the severity of vulnerabilities
+		- Threat
+			- Potential for someone or something to exploit a vulnerability and breach security
+			- A *threat* can have intentional motivations or unintentional motivations
+			- People that pose as a threat are called **threat actors**
+			- Path or malicious tool used by a malicious actor is called a **threat vector**
+		- Risk
+			- Level of hazard posted by vulnerabilities and threats
+			- Calculated as the likelihood of it being exploited
+- ==Attributes of Threat Actors==
+	- Historically, Cybersecurity techniques relies on the identification of static known threats
+	- Now, threats require the creation of profiles of threat actor types or behaviors
+	- Analysis involves identifying the attributes of the threat actors:
+		- Location
+		- capability
+		- recourse/funding
+		- Motivation
+	- Internal/External
+		- Refers to the degree of access that a threat actor possesses before initiating an attack
+		- **External** threat actor has no account or authorized access to a target system
+			- Threats must infiltrate the security system using unauthorized access such as:
+				- Breaking into a building
+				- Hacking a network
+		- Level of sophistication/Capability
+			- Refers to a threat actors ability to use advanced exploit techniques and tools
+			- least available threat actors use widely available tools
+		- Resources/Funding
+			- High capability means there is a lot of funding
+- ==Motivations of Threat actors==
+	- Motivation is the reason for perpetrating the attack
+	- A threat actor with malicious motivation can be contrasted with an accidental or unintentional threat actor
+	- To help analyze motivations, it is useful to consider the general strategies a threat actor can use
+		- Service Disruption
+			- Prevents an organization from working as it does normally
+			- Could attack website or use malware to block access to servers and workstations
+			- Can be used to blackmail a threat
+			- Can be used as a tactic in the pursuit of some different strategic objective
+		- Data Exfiltration
+			- Transfers a copy of some type of valuable information from a computer or network without authorization
+			- Threat actors could want the data for themselves or for blackmail
+		- Disinformation
+			- Falsifies some type of trusted source
+	- ==Can relate these strategies to the way they affect the CIA triad==
+	- ==Chaotic Motivations==
+		- In the early days, many service disruption attacks were perpetrated with the simple goal of causing chaos
+		- That is less prevalent now, attackers might use service disruption or disinformation to further political ends
+	- ==Financial Motivations==
+		- If an attacker is able to steal data, they might be able to sell it to other parties
+		- Could be used for blackmail, extortion, or to perpetrate fraud
+			- **Blackmail**
+				- Demanding payment to prevent the release of information
+			- **Extortion**
+				- Demanding payment to halt some sort of attack
+			- **Fraud**
+				- Falsifying records
+				- Internal fraud might involve tampering with accounts to embezzle funds or inventing customer details to launder money
+	- ==Political Motivations==
+		- Threat actors use an attack to bring about some type of change in society or governance
+		- This can cover a wide range of motivations
+			- Employee acting as a whistleblower
+			- Campaign group disrupting the services or an organization that they believe acts in contradiction to their beliefs
+			- A nation state using service disruption, data exfiltration, or disinformation against government organizations
+- ==Hackers and Hacktivists==
+	- **Hackers**
+		- Describes an individual who has the skills to gain access to a system through unauthorized or unapproved means
+		- The terms unauthorized (blackhat) and authorized (whitehat) are used to distinguish these motivations
+	- **Unskilled actors**
+		- Someone who uses hacker tools without understanding how they work
+	- **Hacker Teams and Hacktivists**
+		- Uses cyber weapons to promote a political agenda
+		- Might attempt to use fata exfiltration to obtain and release information to public domain, perform service disruption attacks, or deface websites
+- ==Nation State Actors==
+	- Most have developed cybersecurity expertise and use cyber weapons to achieve military and commercial goals
+	- The term Active Persistence Threat (APT) was coined to understand the behavior underpinning modern types of cyber adversaries
+	- Have been implicated in many attacks, particularly on energy, health and electoral systems
+	- Main goals are to disinform and espionage for strategic advantage
+	- Work at arms length from the national government, military, or security service that sponsors or protects them
+- ==Organized crime and Competitors==
+	- Cyber crime has overtaken physical crime
+	- *Organized crime* can operate across the internet from a different jurisdiction from its victim, increasing the complexity of prosecution
+- ==Internal Threat Actors==
+	- *External* actor has to break into a system from outside a network without any permissions
+	- *Internal* actor arises from an actor identified by the organization and granted some kind of access
+	- Main motivators are for revenge or financial gain
+	- Can also arise from unintentional or inadvertent insider threats
+		- often caused by lack of awareness or carelessness such as users demonstrating poor password management
+		- can also happen due to *ShadowIT* which is where a user introduces computer software or hardware without the sanction of the IT department
+- ==Review==
+	- Which of the following would be assessed by likelihood and impact: vulnerability, threat or risk?
+		- ==Risk==
+	- True or False? Nation state actors only pose a risk to other states.
+		- ==False==
+	- You receive an email with a screenshot showing a command prompt at one of your application servers. The email suggests you engage the acker for a days constantly to patch the vulnerability. How should you categorize this threat?
+		- ==Financial or criminal==
+	- Which type of threat actor is primarily motivated by the desire for political change?
+		- ==Hacktivists==
+	- Which three types of threat actors are most likely to have high levels of funding?
+		- ==State Actors, Organized Crime, Competitors==

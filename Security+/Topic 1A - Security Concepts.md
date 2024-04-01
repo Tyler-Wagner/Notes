@@ -1,0 +1,68 @@
+To be successful and credible you need to understand security in business from the ground up.
+- **Information Security**
+	- Refers to the protection of data and recourses from unauthorized access, attacks, theft or damage
+	- Data may be vulnerable because of the way it is, stored, transferred or processed
+	- Secure information has 3 properties according to the CIA triad:
+		- Confidentiality
+			- only those who are explicitly authorized may read the data
+		- Integrity
+			- Data is stored and transmitted as intended
+			- modification of data is authorized
+		- Availability
+			- Information is readily accessible to those authorized to view or modify it
+	- Another very important property of secure systems is Non-repudiation
+		- A person cannot deny doing something such as creating modifying, or sending a recourse
+- **Cyber Security Framework**
+	- Cyber security refers specifically to provisioning secure processing hardware and software
+	- Information security and cyber security can be classified as five functions
+		- Identify
+			- Develop secure policies and capabilities
+			- Evaluate, risks, threats and vulnerabilities and recommend security controls to mitigate vulnerabilities
+		- Protect
+			- Procedure/develop, install, operate and decommission IT hardware and software assets
+		- Detect
+			- Perform on going, proactive, monitoring to ensure that controls are effective and capable of defending against new types of threats
+		- Respond
+			- Identify, analyze, contain and eradicate threats to systems and data security
+		- Recover
+			- Implement cyber security resilience to restore systems and data
+- **Gap Analysis**
+	- Each security function is associated with a number of goals or outcomes
+	- Numerous categories and types of security controls
+	- Cyber security framework guides the selection and configuration of controls
+	- Frameworks save a company or organization from building security programs in a vacuum
+	- Frameworks allow for an organization to make an objective statement of:
+		- Their current capabilities
+		- Target level capability
+		- Prioritize investments to achieve that target
+	- Gap analysis identifies how an organizations security systems deviate from those required or recommended by a framework
+	- *Typically involve a third-party to perform the analysis*
+- **Access Control**
+	- Access control systems ensures that an information system meets the goals of the CIA triad
+	- Governs how subjects may interact with objects
+	- Modern access control systems are implemented as Identity and Access Management (IAM)
+	- Consists of four main processes
+		- Identification
+			- Creating an account or ID that is unique to the user, device, or network
+		- Authentication
+			- Proving a subject is who it claims to be when accessing the resource
+		- Authorization
+			- Determining what rights subjects should have on recourses and enforcing those rights
+		- Accounting
+			- Tracking authorized usage of a resource
+	- *Servers and protocols can be referred to as authentication, authorization and accounting*
+	- *processes apply to both people and systems*
+- **Review**
+	- 1) What are the properties of a secure information processing system?
+		- Confidentiality, Integrity and Availability
+	- 2) What term is best used to describe the property of a secure network where the sender cannot deny sending a message?
+		- Non repudiation
+	- 3) A company provides a statement of deviations from framework best practices to a regulator. What process was performed?
+		- Gap analysis
+	- 4) What process within an access control framework logs actions performed by a subject
+		- Accounting
+	- 5) Difference between authorization and authentication?
+		- Authorization = granting a user account access to a resource
+		- Authentication = protecting the validity of the user
+	- 6) how does accounting provide non repudiation?
+		- Each User is associated with a unique computer account

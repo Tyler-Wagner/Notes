@@ -337,4 +337,45 @@
 			- More results if there is a firewall infront of it
 		- Custom Scan
 			- Can modify your own scan types using --scanflags
-			- 
+	- ==Spoofing and Decoys==
+		- Can scan a target using a spoofed IP address and even a spoofed MAC address
+			- only beneficial in a situation where you can guarantee to capture the response
+			- Scan results can be unreliable unless you can get the results
+		- Scanning with a spoofed IP address is 3 steps:
+			- Attacker sends a packet with a spoofed source UIP address to the target machine
+			- Target machine replies to the spoofed IP address as the destination
+			- Attacker captures the replies to figure out open ports
+		- Expected to specify the network interface and disable ping scan
+			- Telling nmap what interface to use and to not expect to receive a ping reply
+		- When on the same subnet as the target machine, you can spoof your MAC address aswell using --spoof-mac
+		- Only possible if the attacker and target are on the same network
+		- Only works in a minimal number of cases where certain conditions are met.
+		- Attacker might resort to using decoys to make it more challenging to be pinpointed.
+	- ==Fragmented Packets==
+		- Firewall
+			- is a piece of software or hardware that permits packets to pass through or blocks them.
+			- Functions based off of rules, summarized as blocking all traffic with exceptions or allowing all traffic with exceptions.
+		- IDS
+			- Inspects network packets for select behavioral patterns or specific content signatures.
+			- Raises an alert whenever a malicious rule is met.
+			- Inspects IP header and transport layer aswell as data layer
+		- Fragmented Packets
+			- Nmap provides a way to fragment packets
+			- Once chosen the IP data will be divided into 8 bytes or less
+				- adding more fragments will increase it exponentially
+	- ==Idle/Zombie Scan==
+		- Spoofing the source IP can be good if you want to be stealthy.
+		- The Idle scan requires and idle system connected to the network that you can communicate with.
+		- Nmap will make each probe look like it is coming from the idle host then will check for indicators whether the idle host received any response to the spoofed probe.
+		- Requires the following three steps to discover if a port is open
+			- Trigger the idle host to respond so that you can record the current IP ID on the idle host
+			- Send a SYN packet to a TCP port on the target. Packet should be spoofed to appear as if it was coming from the idle host.
+			- Trigger the idle machine again to respond so that you can compare the IP ID with the one received earlier.
+		- The attacker will send a SYN packet to the TCP port they want to check on the target machine in the next step. However, this packet will use the idle host IP address as the source. 
+		- Could result in three scenarios:
+			- The TCP port is closed; the target machine responds to the idle host with an RST packet. Idle host does not respond so IP ID does not increase.
+			- TCP port is open, the target machine responds with a SYN/ACK to the idle host. Idle host responds to this unexpected packet with RST which increases the IP ID.
+			- Target machine does not respond at all due to firewall rules. This lack of response will lead to the same results as with the closed port. The idle host will not increase IP ID
+	- ==Getting more details==
+		- Might consider adding --reason for Nmap to provide more details regarding its reasoning and conclusions
+		- Providing the flag gives us the explicit reason why Nmap concluded that the system is up or a particular port is open.
