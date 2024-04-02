@@ -1,0 +1,90 @@
+- Particular operations performed to encode or decode data. 
+- Modern systems use symmetric and asymmetric algorithm types to encode and decode data.
+- ==Cryptographic Concepts==
+	- *Cryptography* which means secret writing, is the art of making information secure by encoding it.
+		- Opposite of security through obscurity
+			- Security through obscurity means keeping something a secret by hiding it.
+		- Does not matter if third parties know the existence and location of the secret because they cannot decode it
+	- Terminology is used to explain cryptography
+		- *Plaintext*
+			- unencrypted message
+		- *Ciphertext*
+			- Encrypted message
+		- *Algorithm*
+			- Process used to encrypt and decrypt a message
+		- *Cryptanalysis*
+			- art of cracking cryptographic systems
+	- Cryptography has characters to describe different actors involved
+		- *Alice*
+			- sender of the genuine message
+		- *Bob*
+			- intended recipient of the message
+		- *Mallory*
+			- Malicious attacker attempting to subvert the message in some way
+- ==Symmetric Encryption==
+	- *encryption* algorithm is a type of cryptographic process that encodes data so that it can be stored or transmitted securely and then decrypted only by its owner or its intended recipient.
+	- *Key* allows the correct person to decrypt the message
+	- **Substitution and Transposition Algorithms**
+		- *Substitution cipher* involves replacing characters or blocks in the plaintext with different ciphertext.
+		- Simple substitution ciphers rotate or scramble the letters of the alphabet
+		- Modern encryption algorithms use the basic techniques of substitution and transposition in complex ways that can defeat attempts at cryptanalysis
+	- **Symmetric Algorithms**
+		- *symmetric algorithm* is one in which encryption and decryption are both performed by the same secret key
+		- Secret key must be kept known to authorized persons only.
+			- Key lost or stolen means the security is breached
+		- very fast and used for bulk encryption of large amounts of data
+- ==Key Length==
+	- Encryption algorithms use a key to increase the security process.
+	- Key is important because it means that even if the cipher method is known a message still cannot be decrypted without knowledge of the specific key
+	- A *keyspace* is the range of values that the key could be
+	- Modern ciphers use large keyspaces where there are trillions of possible key values
+		- Makes the key difficult to discover via brute force
+		- *Brute force cryptanalysis* means attempting decryption of the ciphertext with every possible key value reading the result to determine if it is still gibberish or plaintext
+	- Keys for modern systems usually use a pseudorandomly generated number of bits
+		- number of bits is the key length
+		- Draw back to larger keys is that the computer must use more memory and processor cycles to perform encryption and decryption
+- ==Asymmetric Encryption==
+	- In symmetric encryption, the same secret key is used to perform both encryption and decryption
+	- *Asymmetric algorithm* encryption and decryption are performed by two different but related public and private keys
+	- When a public key is used to encrypt a message, only the paired private key can decrypt the cipher text.
+		- Public key cannot be used to decrypt the cipher text
+		- Keys are generated to make it harder to derive the public key from the private key
+		- Key owner can distribute the public key to anyone they want to receive a message from
+	- Drawback of asymmetric encryption is that it involves substantial computer overhead compared to symmetric encryption.
+		- Rather than being used to encrypt the bulk data directly, the public key cipher can be used to encrypt a symmetric secret key.
+- ==Hashing==
+	- A *hashing* algorithm produces a fixed-length string of bits from an input plaintext that can be of any length.
+		- Output can be referred to as a hash or message digest.
+		- Impossible to recover the plaintext data from the digest and so that different inputs are unlikely to produce the same output
+		- Used to improve integrity
+	- A hash file can be used to verify the integrity of that file after transfer
+	- Two popular implantations of a hash algorithm:
+		- **Secure Hash Algorithm (SHA)**
+			- Considered the strongest algorithm
+			- Variants with different outputs
+				- longer digests considered more secure
+			- Most popular variant is sha256
+		- **Message Digest Algorithm 5 (MD5)**
+			- Not considered to be quite as safe for use as SHA256
+			- Might be required for compatibility between products
+- ==Digital Signatures==
+	- A single hash function, symmetric cipher, or asymmetric cipher is called a *cryptographic primitive*
+	- A complete cryptographic system or product is likely to used multiple cryptographic primitives within a cipher suite
+	- Encryption can be used to ensure confidentiality
+		- Can also be used for integrity and authentication
+	- The two below cryptographic ciphers can be combined to make a digital signature:
+		- Public key cryptography can authenticate a sender, because they control a private key that produces messages in a way that no one else can.
+		- Hashing improves the integrity by computing a unique fixed-size message digest from any variable length input.
+	- If two digests are the same, then the data has not been tampered with during transmission.
+		- Alice's identity is guaranteed
+- ==Review==
+	- Which part of a simple cryptographic system must be kept secret - the cipher, cipher text or the key?
+		- ==The key==
+	- Considering that a cryptographic hashing is one way and the digest cannot be reversed, what makes hashing a useful security technique?
+		- ==It verifies the file has not been tampered with as long as both hashes from sender and receiver return the same value.==
+	- Which security property is assured by symmetric encryption?
+		- ==Confidentiality==
+	- What are the properties of a public / private key pair?
+		- ==Each key can reverse the cryptographic operation performed by its pair but cannot reverse an operation performed by itself.==
+	- What is the process of digitally signing a message?
+		- ==A hashing function is used to create a message digest. The digest is then signed using the sender's private key. The resulting signature can be verified by the recipient using the senders public key and cannot be modified by any other agency.==

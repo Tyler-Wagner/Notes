@@ -1,0 +1,45 @@
+- ==Certificate Authorities==
+	- Solved the problem of distributing encryption keys when you want to communicate securely with others or authenticate a message that you send to others.
+		- When you want others to send confidential messages. you give them a public key to use to encrypt the message.
+		- When you want to authenticate yourself you sign a hash of your message with your private key.
+	- The basic problem:
+		- There is no mechanism for establishing the owner's identity.
+			- Shown in e-commerce
+		- How can you be sure a shopping or banking service is really maintained by whom it claims
+	- *Public Key Infrastructure* aims to prove that the owners of public keys are who they say they are.
+		- Anyone issuing a public key should publish it in a digital certificate
+		- Certificate is guaranteed by a *certificate authority (CA)*
+	- PKI can use private or third party CA's
+	- Private CA can be set up within an organization for internal communications
+		- only be trusted within an organization
+	- Functions of a third party CA
+		- Provide a range of certificate services useful to the community of users
+		- Ensure the validity of certificates and the identity of those applying for them
+		- Establish trust in the CA with users, governments, regulatory authorities, and enterprises
+		- Manage the servers that store and administer the certificates
+		- Perform key and certificate lifecycle management
+- ==Digital Certificates==
+	- Essentially a wrapper for a subjects public key
+	- Contains information about the subject and certificates issuer
+	- Signed to prove that it was issued to the subject by a particular CA
+		- Could be a human or a server
+- ==Root of Trust==
+	- Defines how users and different CAs can trust one another.
+	- Each CA issues itself a certificate
+		- Called the *root certificate*
+			- Self signed
+			- Uses RSA 2048 or 2096
+			- Can be used to sign other certificates issued by the CA
+	- **Single CA**
+		- A single root CA issues certificates directly to users and computers
+		- Often used on private networks
+		- Problem:
+			- Single CA server is exposed, if compromised the whole PKI collapses
+	- **Third Party CA's**
+		- Operate a hierarchical model
+		- In hierarchical model:
+			- the root CA issues certificates to one or more intermediate CAs
+			- Intermediate CAs issue certificates to subjects
+		- Has the advantage that different intermediate CAs can be set up with certificate policies 
+	
+	

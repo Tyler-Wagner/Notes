@@ -36,4 +36,39 @@
 	- Phishing refers specifically to email or text message threat vectors
 	- Other ways to perform phishing on other types of media are:
 		- *Vishing*
-			- 
+			- A phishing attack conducted through a voice channel
+			- Can be much more difficult for someone to refuse a request made in a phone call compared to one made in an email
+		- *SMiShing*
+			- Phishing attack that uses simple message service (SMS) text communications as the vector
+	- Direct messages to a single contact have a high chance of failure.
+		- Other types of phishing actually try to get multiple people to validate credentials
+	- *Pharming* attack is one that redirects users from a legitimate website to a malicious one.
+		- Pharming relies on corrupting the way the victims computer performs Internet name resolution so the person is being redirected from the right site to the malicious one.
+- ==Typosquatting==
+	- Means that the threat actors registers a domain name very similar to a real one.
+		- Hopes a user will not notice the difference and assume they are browsing a trusted site or receiving an email from a trusted source.
+	- Another technique is to register a hijacked subdomain using the primary domain of a trusted cloud provider.
+- ==Business Email Compromise==
+	- Refers to a sophisticated campaign that targets a specific individual within the company.
+		- Typically is a executive or senior manager.
+	- Threat actor is likely to perform recon to obtain a detailed understanding of the target and the best psychological approach and pretexts to trick them.
+	- Threat actor might first try to gain control of a legitimate mail account to use to send the phishing messages.
+	- **Brand Impersonation and Disinformation**
+		- Brand Impersonation means the threat actor commits a resources to accurately duplicate a company's logo and formatting to make phishing messages or pharming website a visually compelling fake.
+			- Could even fake the stye or tone of email communications
+		- Disinformation refers to a purposeful motivation to deceive
+			- Might attempt to get others to repeat or amplify the false facts.
+			- Creates misinformation
+		- Misinformation refers to repeating false claims or rumors without the intention to deceive.
+	- **Watering Hole Attack**
+		- Relies on a group of targets that use an unsecure third party website.
+- ==Review==
+	- The help desk takes a call, and the caller states that she cannot connect to the e-commerce website to check her order status. She would also like a username and password. The user gives a valid customer company name but is not listed as a contact in the customer database. The user does not know the correct company code or customer ID. This is likely to be a social engineering attempt, or is it a false alarm?
+		- ==Social engineering attack==
+	- A purchasing manager is browsing a list of products on a vendors website when a window opens claiming that antimalware software has detected several thousand files on their computer that are infected with viruses. Instructions in the official-looking window indicate the user should click a link to install software that will remove these infections. What type of social engineering attempt is this, or is it a false alarm?
+		- ==Phishing, trying to have the user download some software==
+	- Your CEO calls to request market research data immediately be forwarded to their personal email address. You recognize their voice, but a proper request form has not been filled out and use of third-party email is prohibited. They state that normally they would fill out the form and should not be an exception, but they urgently need the data to prepare for a roundtable at a conference they are attending. What type of social engineering techniques could this use, or is it a false alarm?
+		- ==Brand Impersonation, Vishing, Impersonation and Pretexting==
+	- A company policy states that any wire transfer above a certain value must be authorized by two employees, who must separately perform due diligence to verify invoice details. What specific type of social engineering is this or is this policy designed to mitigate?
+		- ==Designed to mitigate==
+	
