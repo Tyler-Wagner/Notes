@@ -1,0 +1,39 @@
+- People - employees, contractors, suppliers and customers - represent part of the attack surface of any organization.
+- Referred to as the human vector.
+- ==Human Vectors==
+	- A prerequisite of many types of attacks is to obtain information about the network and security system.
+	- Knowledge is not only stored on computer disks; it also exists in the minds of employees and contractors.
+	- People operating computers and accounts are part of the attack surface.
+	- *Social Engineering* refers to means of either eliciting information from someone or getting them to perform some action for the threat actor.
+		- Can also be referred to as "hacking the human"
+	- Threat actor might use social engineering to gather intelligence as recon in preparation for an intrusion or to effect an actual intrusion by obtaining account credentials or persuading the target to run malware.
+	- Many diverse social engineering strategies of social engineering
+		- A threat actor creates an executable file that prompts a network user for their password and then records whatever the user inputs. Attacker emails the executable file to the user with the story that the user must open the file and log organization has been experiencing that morning.
+		- Threat actor contacts the help desk pretending to be a remote sales representative who needs assistance setting up remote access.
+		- A threat actor triggers a fire alarm and then slips into the building during the confusion and attaches a monitoring device to a network port
+- ==Impersonation and Pretexting==
+	- *Impersonation* simply means pretending to be someone else.
+		- One of the basic social engineering techniques
+		- Possible when the target cannot verify the attackers identity easily
+	- Threat actor will usually use one of the two approaches
+		- **Persuasive/consensus/liking**
+			- Convince the target that the request is a natural one that would be impolite or somehow "odd" to refuse
+		- **Coercion/threat/urgency**
+			- Intimidate the target with a bogus appeal to authority or penalty.
+	- The classic impersonation attack is for the social engineer to phone into a department, claim they have to adjust something on the user's system remotely, and then get the user to reveal their password
+	- The use of a carefully crafted story with convincing or intimidating details is called *pretexting*
+	- Making an impersonation to either charm or intimidate a target usually depends on the attacker obtaining privileged information about the organization.
+	- Some techniques are dedicated to obtaining this type of intelligence as a recon activity
+	- Most companies are set up toward customer service rather than security
+		- information is quite easy to come by
+	- Any information an attacker can get can assist them in their attack
+- ==Phishing and Pharming==
+	- *Phishing* is a combination of social engineering and spoofing.
+		- Persuades or tricks target into interacting with a malicious resource disguised as a trusted one.
+	- A phishing message might try to convince the user to perform some action
+	- Other types of phishing use a spoof website set up to imitate a bank or e-commerce site or some other web resource that should be trusted by the target.
+	- When the user authenticates with the spoofed site, their login credentials are captured.
+	- Phishing refers specifically to email or text message threat vectors
+	- Other ways to perform phishing on other types of media are:
+		- *Vishing*
+			- 
