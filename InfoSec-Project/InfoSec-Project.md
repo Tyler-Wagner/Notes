@@ -63,4 +63,14 @@
 		- Could be key
 		- 
 	- Stored its output of the login to my kali desktop
-	- 
+- ==Website==
+	- Ran dirb
+		- cgi-bin
+		- compare
+		- events
+		- favicon.ico
+		- live
+	- **cgi-bin**
+		- from Curl
+			- curl https://my.wyze.com/cgi-bin/cgi-bin
+

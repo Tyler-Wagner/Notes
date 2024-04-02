@@ -378,4 +378,81 @@
 			- Target machine does not respond at all due to firewall rules. This lack of response will lead to the same results as with the closed port. The idle host will not increase IP ID
 	- ==Getting more details==
 		- Might consider adding --reason for Nmap to provide more details regarding its reasoning and conclusions
-		- Providing the flag gives us the explicit reason why Nmap concluded that the system is up or a particular port is open.
+		- Providing the flag gives us the explicit reason why Nmap concluded that the system is up or a particular port is open
+- **Nmap Post Port Scans**
+	- ==Introduction==
+		- Focus on the steps that follow port-scanning
+			- Service detection
+			- OS detection
+			- Nmap scripting engine
+			- saving the scan results
+	- ==Service Detection==
+		- Once nmap sees open ports, you can probe the available port to detect the running service
+		- Can control intensity with --version-intensity LEVEL
+			- Level ranges from 0 to 9
+	- ==OS and Traceroute==
+		- **OS**
+			- Nmap can detect the Operating System based on its behavior and any telltale signs in its responses.
+			- OS detection is very confident, however, many factors might affect its accuracy.
+				- Must find one open and closed port
+				- Fingerprints might get distorted due to the rising use of virtualization and similar technologies
+		- **Traceroute**
+			- Nmaps traceroute will work differently than the traceroute command.
+			- Standard traceroute starts with a packet of low TTL and keeps increasing until it reaches its target.
+			- Nmaps traceroute starts with a packet of high TTL and keeps decreasing it
+	- ==Nmap Scripting Engine==
+		- A script is a piece of code that does not need to be compiled.
+			- Remains in human readable form and does not need to be converted to machine language
+		- Nmap provides support for scripts via the Lua Language
+		- Nmap install contains close to 600 scripts
+		- You can specify to use any or a group of these installed scripts.
+		- Can install other users scripts and use them
+		- Some scripts belong to more than one category
+	- ==Saving the Output==
+		- Three main formats for naming conventions are
+			- Normal
+			- Grepable
+			- XML
+		- **Normal**
+			- Is similar to the output you get on the screen when scanning a target
+				- -oN
+					- N stands for normal
+		- **Grepable**
+			- It makes filtering the scan output for specific keywords or terms efficient
+			- Makes each line meaningful
+		- **XML**
+			- Most convenient to process the output in other programs
+- **Protocols and Servers**
+	- ==Introduction==
+		- Introduces to common protocols such as
+			- HTTP
+			- FTP
+			- POP3
+			- SMTP
+			- IMAP
+		- Talks about what happens on the low level and is usually hidden by an elegant GUI
+	- ==Telnet==
+		- Application layer protocol used to connect to a virtual terminal of another computer.
+		- When a user connects, they will be asked for a username and password
+		- Not encrypted
+			- All data sent is seen in clear text
+		- Uses Port 23
+	- ==HTTP==
+		- protocol used to transfer web pages
+		- HTTP sends and receives data as cleartext
+	- ==File Transfer Protocol==
+		- Developed to make the transfer of files between different computers with different system efficient
+		- Sends and receives data as clear text
+		- Commands such as:
+			- **STAT**
+				- Provides additional information
+			- **SYST**
+				- Shows system type
+			- **PASV**
+				- Switches the mode to passive
+		- Two modes for FTP
+			- Active:
+				- Data is sent over a separate channel originating from the FTP servers port 20
+			- Passive:
+				- The data is sent over a separate channel originating from an FTP client's port above the number 1023
+			- 
