@@ -1,0 +1,6 @@
+- **Daily**
+- **Questions**
+	- What is considered in scope and out of scope for Rev 2
+		- Everything is in scope nothing is outside of scope as I should have to report on ANY findings. Whether they will be in the final revision or not
+		- They can have their OWN scope, but I should still have to report on everything and anything I find to ensure the devices security
+	- 112 byte length packet
