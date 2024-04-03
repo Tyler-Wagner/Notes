@@ -40,6 +40,15 @@
 		- In hierarchical model:
 			- the root CA issues certificates to one or more intermediate CAs
 			- Intermediate CAs issue certificates to subjects
-		- Has the advantage that different intermediate CAs can be set up with certificate policies 
-	
-	
+		- Has the advantage that different intermediate CAs can be set up with certificate policies, which enables users to perceive clearly what a particular certificate is for.
+		- Each leaf certificate can be traced to the root CA
+			- Also called *certificate chaining* or *chain of trust*
+- ==Self-signed Certificates==
+	- Any machine, web server or program code can be deployed with a *self signed certificate*
+	- Self-signed certificates can also be useful in development test environments
+	- OS or web browser will mark self-signed certificates as untrusted
+		- Users can override this
+	- Difficult to validate
+	- Not used to protect critical hosts and applications
+- ==Certificate Signing Requests==
+	- 
