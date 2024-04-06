@@ -40,58 +40,15 @@
 		- In hierarchical model:
 			- the root CA issues certificates to one or more intermediate CAs
 			- Intermediate CAs issue certificates to subjects
-		- Has the advantage that different intermediate CAs can be set up with certificate policies 
+		- Has the advantage that different intermediate CAs can be set up with certificate policies, which enables users to perceive clearly what a particular certificate is for.
+		- Each leaf certificate can be traced to the root CA
+			- Also called *certificate chaining* or *chain of trust*
+- ==Self-signed Certificates==
+	- Any machine, web server or program code can be deployed with a *self signed certificate*
+	- Self-signed certificates can also be useful in development test environments
+	- OS or web browser will mark self-signed certificates as untrusted
+		- Users can override this
+	- Difficult to validate
+	- Not used to protect critical hosts and applications
 - ==Certificate Signing Requests==
-	- Registration is the process by which end users create an account with the CA and become authorized to request certificates.
-	- The process by which users are authorized and their identity proven depends on the CA implementation.
-		- Windows:
-			- Users and devices can often auto-enroll with the CA just by authenticating with active directory
-		- Third Party:
-			- Might perform a range of tests to ensure that a subject is who they claim to be.
-	- CA will want to ensure they only issue certificates to real users or their reputation will suffer.
-	- When someone wants to obtain a certificate, they first generate a key pair comprising of public and private keys.
-		- Private key must be kept well protected and known only to the user.
-		- User completes the *certificate signing request* (CSR) and submits it to the CA
-			- CSR is a file containing the information that the subject wants to use in the certificate, including the public key.
-	- The CA reviews the certificate and checks the information is valid.
-		- if the request is accepted the CA will sign the certificate and send it to the subject.
-- ==Subject Name Attributes==
-	- When certificates were first introduced the *common name* (CN) attribute was used to identify the fully qualified domain name
-		- Can contain different kinds of information making it difficult for a browser to interpret it correctly
-		- Is now Deprecated as it cannot resolve a network address
-	- The *subject alternative name* (SAN) extension is structured to represent different types of identifiers
-		- If the certificate is configured with SAN it should ignore the CN value
-		- also allows a certificate to represent different subdomains
-		- Listing specific subdomains is useful, if a new subdomain is added, a new certificate must be issued.
-	- A *wildcard domain* means that the certificate issued to the parent domain will be accepted as valid or all subdomains. 
-- ==Certificate Revocation==
-	- A certification can be revoked or suspended:
-		- Revoked certificates are no longer valid and cannot be reinstated
-		- A suspended certificate cannot be re-enabled
-	- May be revoked or suspended by the owner or by the CA for many reasons
-		- Private key may have been compromised
-		- Business could have closed
-		- user could have left the company
-		- domain name could have changed
-		- certificate could have been misused
-	- Must be a mechanism to inform users whether a certificate is valid, revoked, or suspended
-	- CA must maintain a *certificate revocation list* (CRL) of all revoked and suspended certificates
-		- Must be accessible to anyone relying on the validity of CA's
-	- CRL has the following attributes
-		- **Publish period**
-			- Date ad time on which the CRL is published
-		- **Distribution Points**
-			- Locations to which the CRL is published
-		- **Validity Period**
-			- The period which the CRL is considered authoritative
-			- Usually a bit longer than the publishing period
-		- **Signature**
-			- CRIL is signed by the CA to verify its authenticity
-	- With CRL system there is a risk the certificate might be revoked but still accepted by clients because an up-to-date CRL has not been published
-	- Another means of providing up-to-date information is to check the certificates status on an *Online Certificate Status Protocol* (OCSP) server
-		- Communicates certificate status
-		- Responder service should be published in its certificate
-		- Most servers can query the database directly and obtain the real-time status of a certificate
-- ==Key Management==
-	- Refers to operational considerations for the various stages in a key's lifecycle
-	- Life cycle may involve the following steps
+	- 

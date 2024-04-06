@@ -1,6 +1,59 @@
-- **Daily**
-- **Questions**
-	- What is considered in scope and out of scope for Rev 2
-		- Everything is in scope nothing is outside of scope as I should have to report on ANY findings. Whether they will be in the final revision or not
-		- They can have their OWN scope, but I should still have to report on everything and anything I find to ensure the devices security
-	- 112 byte length packet
+- **4/4/24 Going over UTSA Findings**
+	- 1.2 Initial Results
+		- Vulnerability 1: SSH On Front-End Interfaces
+			- Performed a Nmap TCP service scan on 192.168.0.1
+				- Port 22: SSH open on front end
+					- Still is listening and denying login as root:root
+				- Port 53: Domain closed on front end
+				- Port 80: HTTP open on front end
+			- Performed a Nmap TCP service scan on 192.168.0.2
+				- Port 22: SSH open on front end
+				- Port 53: Domain closed on front end
+				- Port 80: HTTP open on front end
+		- Vulnerability 2: SSH Advertise Host Server Version
+			- Still works
+			- Shows not only SSH version but also the Linux version and operating system they are currently on
+		- Vulnerability 3: Rate limiting is not implemented on SSH
+			- Normally on SSH you limit the amount of session logins
+			- Ran with 64 and it was fine
+				- Normal is 4
+		- Vulnerability 4: Default credentials
+			- Still using the default credentials that are found within rockyou.txt
+	- PSTree analyzation
+		- No major differences between us and UTSA other than:
+			- nginx
+				- SHSU
+				- possibly being used for front end
+			- postapd
+				- UTSA
+				- Forward Edge service that is being ran
+					- Nothing found on google
+			- udisksd
+				- UTSA
+				- Better version of UDev
+					- Identifies devices by serial numbers, manufactures and even vendor ID
+			- wpa_supplicant
+				- UTSA
+				- Wireless authentication
+			- phpfpm
+				- SHSU
+				- Script interface
+	- /opt/pfed
+		- Analyzed scripts
+			- pfed_xdp
+			- pfed
+	- Web Interface
+		- everything Logs and below is returning a bad gateway
+	- /var/www/scripts
+		- Richard snooped in there a bit
+	- sudo -i
+		- please for the love of everything that is holy, get a password for this
+		- allows the user to do what ever they want since they are given escalated privileges
+	- phpinfo.php
+		- accessible for outside user
+		- found via dirb
+			- dirb http://192.168.0.1
+	- ==Question==
+		- Will the access only be from one EUD to another
+		- Will there be an unencrypted tunnel that we can access
+		- If there is a callback that the boards make, that is going to be an issue
