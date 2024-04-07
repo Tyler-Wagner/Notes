@@ -31,6 +31,11 @@
 				- 58798/udp open|filtered unknown
 			- ospf-lite can be referenced in the link shown here
 				- https://www.speedguide.net/port.php?port=8899
+		- Shockingly when you open the webpage more ports get added.
+			- 58467
+			- 58468
+			- 58469
+		- Communicates to the webservice with othose ports
 	- <u>NetDiscover</u>
 		- Netdiscover showed that there is a secondary IP 192.168.0.78 with a different MAC address d0:3f:27:fd:82:71
 			- You are able to ping the IP given above
