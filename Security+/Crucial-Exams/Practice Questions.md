@@ -1,0 +1,96 @@
+- Managerial Controls
+	- Controls that are designed to establish security policies, procedures, and guidelines
+- First thing you do to maintain the integrity of the digital evidence in an on-going investigation
+	- Create a bit by bit image of the device's storage
+- SSO
+	- Reduces the amount of different login IDs and passwords their employees need to access different company recourses 
+- Passive network traffic viewer
+	- allows the user to view traffic without altering it
+- Data masking
+	- strategy for securely storing sensitive data
+- Likelihood
+	- Describes the probability that a given threat is capable of exploiting a particular vulnerability
+- Mantrap
+	- Highly secure physical control that consists of two sets of interlocking doors
+		- prevents tailgating
+- WAF
+	- Web application firewall
+		- filters, monitors, and blocks HTTP traffic to and from a web service
+- Software Defined Networking (SDN)
+	- provides dynamic and flexible network segmentation
+	- allows for central access management
+		- IT can quickly adapt to changes
+- WEP
+	- Wired Equivalent Privacy
+	- Commonly used protocol to encrypt wireless networks
+	- Should never be implemented as it is deprecated
+		- WPA2 instead
+- Directive Control
+	- Guidelines requiring employees to report suspicious behavior
+- Logic Bomb
+	- Piece of code intentionally inserted into a software system that will set off a malicious function when specified conditions are met
+		- Time
+		- Date
+		- time passed
+- Choose Your Own Device (CYOD)
+	- allows employees within a company to choose the device they would like to use from a list of devices the company has predetermined
+- Accepting risk
+	- appropriate when the cost of implementing safeguards is greater than the potential loss or when resources are insufficient
+- Recovery Time Objective
+	- Predetermined amount of time a business solution or process can remain offline following a disaster or incident
+- Business Continuity Plan
+	- Plan for the continued operation of critical business processes in the event of a disruption/unplanned event
+- Managerial Controls
+	- Actions taken to manage the development, maintenance and use of the system
+	- Includes system specific
+		- Policies
+		- Procedures
+		- rules of behavior
+		- Individual roles
+		- Responsibility
+- Forgery attack
+	- Involves creating a false or altered
+		- document
+		- message
+		- piece of information
+- Inline device
+	- Placed directly in the path of the network traffic
+	- has the ability to
+		- Block network traffic
+		- Permit network traffic
+		- Modify network traffic
+- Security Information and Event Management (SIEM)
+	- Used to centralize logging and alerting from various types of network devices
+- 802.1X
+	- IEEE standard for port-based Network Access Control (PNAC)
+	- Group of networking protocols
+- Risk Mitigation
+	- Process of using security controls/ countermeasures in reducing risk exposure and minimizing the likelihood of an incident
+- Tokenization
+	- Appropriate method to secure sensitive data at rest
+		- Especially for financial transaction data
+- Reverse Proxy
+	- Designed to retrieve resources on behalf of a client from one or more servers
+- Detective Controls
+	- Designed to identify and respond to incidents that have occurred
+	- allows an organization to understand how the attack happened
+- Information Security Policies
+	- Should guide the decision making process as it outlines the organizations overarching rules, expectations and practices related to maintaining information security
+- Bring Your Own Device (BYOD)
+	- Refers to a policy of permitting employees to bring personally owned devices to work and to use those devices to access privileged company information and applications 
+- Self Encrypting Device (SED)
+	- Type of drive that automatically encrypts all data saved to the disk
+- Non-repudiation
+	- Links an action to an individual using a unique identifier
+- Password Spraying
+	- an attack that attempts to access a large number of accounts with a few commonly used passwords
+- OAuth
+	- Allows third party applications to access user data without requiring users to share their login credentials with the third-party applications.
+- Air gap
+	- Practice of physically isolating a secure network from an unsecured one
+- Nation-State Actor
+	- refers to individuals or groups that are sponsored, directed, or tolerated by a national government to conduct
+		- Cyber espionage
+		- Sabotage
+		- Attacks
+- 
