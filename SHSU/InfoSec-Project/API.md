@@ -1,0 +1,6 @@
+- IP = 54.200.47.94
+- Shodan Results
+	- https://www.shodan.io/host/54.200.47.94
+- Nmap
+	- 443
+	- 8443
