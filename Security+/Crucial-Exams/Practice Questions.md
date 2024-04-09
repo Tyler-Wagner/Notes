@@ -93,4 +93,29 @@
 		- Cyber espionage
 		- Sabotage
 		- Attacks
-- 
+- Evil Twin
+	- A fraudulent access point that appears to be legitimate used by an attacker to gain access to network traffic
+- Role Based Access Control
+	- Effective for restring access to data within an application based on a user's role within an organization.
+	- Only authorized users are granted the permissions necessary to access, modify, or interact with sensitive data
+- Warm Site
+	- necessary hardware and connectivity are in place, with data and software backups readily available
+- Data Loss Prevention (DLP)
+	- Used to describe all of the means used to protect data from loss or leakage
+- Hardware Security Module (HSM)
+	- physical device that provides a secure environment for cryptographic operations such as the generation, management, storage, and protection of encryption keys
+- Screened Subnet
+	- Sectioned off perimeter network that is isolated from the internal network. 
+	- Provides additional security from eternal threats by housing public facing resources
+- Impossible Travel Indicator
+	- Reflects the unrealistic geographical locations between two login events by the same user within a short period of time. 
+	- Often shows the signs of credential compromise and unauthorized access
+- Crossover error rate
+	- Point at which the false acceptance rate (FAR) and the false rejection rate (FRR) are equal
+- Biometric Authentication
+	- Considered passwordless because it does not require users to remember or input a password
+- Policy Enforcement Point(PEP)
+	- security control that enforces access policies
+	- Checks for compliance with the security policy before granting access to a resource
+	- acts as a gatekeeper
+- pushing something
