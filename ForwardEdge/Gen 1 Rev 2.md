@@ -168,3 +168,33 @@
 		- Research further on some packages and figure out what they actually need to run and what they do.
 			- Find vulnerabilities in the packages based on what they do
 			- ANALYZE SOURCE CODE FOR ANY INJECTION POINT!
+- **4/10/24**
+	- Confirming DOS findings and aligning packets to my notes
+		- Starting DOS attack at 11:12
+			- Starting with 4 and adding more every so often
+			- Packet starts at 489826 for the DOS
+		- Restarting packet capture because this thing is confusing. This attack isn't even 100% certain to work. Could be due to hardware or something else however I cannot get it to replicate all the time.
+			- Started at 11:35
+			- Going to increase incrementally starting with 4 attacks
+			- I also have a ping to the hub on my end so I can monitor when and if packets are making it through
+			- Decided to move 4 of the DOS terminals from my machine to another machine. Hoping this fixes the issue where some packets still get through and its just due to my hardware limitations.
+				- seems like this is part of the issue that I am running into. I need something with faster clock speeds and more cores
+				- Threat actor with the proper hardware could EASILY hit this offline without any sort of struggle.
+					- My home desktop could MURDER these boards
+				- Consumer hardware could take these down
+		- After running it for an hour the hub board will not communicate however the moment the DOS is no longer running they start to communicate again with each other.
+		- Need to understand what causes the boards to not communicate with each other to discover how to actually disable the hub board from communicating.
+			- Can disable the communication temporarily but cannot get it to work consistently.
+			- Have done it once or twice but cannot go further than that nor do I fully understand how they get into that state.
+				- Understand there is a panic mode but I don't understand how to get it in there without unplugging it.
+			- Packets still go through even if the DOS is happening
+				- Not really going through but getting stuck behind the DOS traffic so when the DOS goes away the traffic continues.
+				- Maybe Lumin has the resources to understand this better? 
+				- Having some formal documentation on what happens where would be insightful for us. 
+					- Will assist in the information on the DOS
+					- This information will become public one day if it already isn't, might as well give it to us so we can actually find the issues that threat actors will find later on.
+	- End of day
+		- DOS works and you can stop the hub from communicating with the client, however you cannot stop all communication after the DOS ends all the time.
+		- I want to have some sort of documentation showing how the boards not only communicate with each other but also what happens in between each board.
+		- I want to try an exploit I found on twitter last night during tomorrows testing.
+- 
