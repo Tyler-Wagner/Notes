@@ -6,6 +6,7 @@
 		- Tyler's IPhone 192.168.0.159
 	- Tyler's Kali IP is 192.158.0.143
 	- Chrome works better for web app
+	- Everything on site encoded with Base64
 - ==**Reconnaissance**==
 	- <u>Nmap</u>
 		- Performed an Nmap scan on my phone at 9:11 PM on 3/9/24 to see what my phones ports were open to
