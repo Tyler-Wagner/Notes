@@ -197,4 +197,8 @@
 		- DOS works and you can stop the hub from communicating with the client, however you cannot stop all communication after the DOS ends all the time.
 		- I want to have some sort of documentation showing how the boards not only communicate with each other but also what happens in between each board.
 		- I want to try an exploit I found on twitter last night during tomorrows testing.
-- 
+- **4/11/24**
+	- Starting the day with an exploit that could easily be on the boards.
+	- It is possible the board is vulnerable to the exploit, however without being able to directly check it then I cannot confirm or deny the statement.
+		- https://github.com/YuriiCrimson/ExploitGSM/blob/main/README.md
+	- For the rest of today I am going to figure out how to gain access to the boards without using ssh
