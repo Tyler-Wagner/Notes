@@ -1,0 +1,32 @@
+- level 0
+	- Something in the background of the webpage
+		- Right clicking and viewing the background image allowed you to view the flag
+- Level 1
+	- Flag 0
+		- Started by messing with the page source and hyper links
+		- Went to Burp and found nothing
+		- Curl'ed the url given and noticed a gap between the pages
+		- Manually inputted page numbers within the missing range
+		- Found a forbidden page
+		- changed the page link to be an edited version of the Forbidden page
+		- Got the flag
+	- Flag 1
+		- Pages are stored within a database
+		- Pages are directly linked to the URL
+		- Page ID was passed in the URL
+		- This allowed us to find out that there could have been an SQLi
+		- Flag was returned when inputting a " ' " in the link
+	- Flag 2
+		- Figured out the was a possibility of XSS
+			- Knew to check this due to web pages having this enabled
+		- Created a new page which gave us the ability to input a script to cause an alert to be triggered
+		- Investigated different ways to get the script to run
+			- Flag came from this
+	- Flag 3
+		- Buttons can execute code
+		- Clicked on many buttons to see what they returned
+		- Had the ability to edit the markdown page that already had a button
+		- researched how to but a script inside of a button press
+		- Implemented the script inside the button
+		- No popup was given so we checked the page's source to verify it worked
+		- flag was there
