@@ -1,0 +1,16 @@
+- for some reason all cameras come shipped with baseline firmware and not the most up to date firmware
+	- Gave us an earlier version of 4.3X.XX.XXXX
+- All of the messages that are of any importance are encoded with and EC Diffie-Hellman, specifically 25519
+	- Would take WAY too long for anyone's machine to break the key
+	- Hash for the signature is also insanely good using 
+		- ecdsa_secp256r1_sha256
+- Ran an Nmap on the thing, nothing on the TCP side (yet) but the UDP is what we are interested in anyways
+- **Bin Walking**
+	- Unzipped the firmware from Wyze website
+		- Binaries are being made with MACOS
+			- Can tell because of the extraction of the zip folder
+	- binwalk -t shows multiple file systems
+		- Squashfs
+			- has a shadow file
+				- Password is salted and is using SHA-512
+					- Thats not happening
