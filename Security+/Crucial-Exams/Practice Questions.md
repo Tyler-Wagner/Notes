@@ -93,6 +93,7 @@
 		- Cyber espionage
 		- Sabotage
 		- Attacks
+<<<<<<< Updated upstream
 - Evil Twin
 	- A fraudulent access point that appears to be legitimate used by an attacker to gain access to network traffic
 - Role Based Access Control
@@ -119,3 +120,11 @@
 	- Checks for compliance with the security policy before granting access to a resource
 	- acts as a gatekeeper
 - pushing something
+=======
+- Corrective Controls
+	- Designed to fix damages or restore resources and capabilities after a security incident has occurred 
+- Role Based Access Control (RBAC)
+	- Access control scheme that controls access and permission by assigning them based on roles
+- Key Risk Indicators (KRI)
+	- Proactive metrics that enable organizations to anticipate and manage risks before they fully develop
+>>>>>>> Stashed changes
