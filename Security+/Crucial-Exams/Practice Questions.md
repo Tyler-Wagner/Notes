@@ -113,9 +113,10 @@
 - Crossover error rate
 	- Point at which the false acceptance rate (FAR) and the false rejection rate (FRR) are equal
 - Biometric Authentication
-	- Considered passwordless because it does not require users to remember or input a password
+	- Considered password-less because it does not require users to remember or input a password
 - Policy Enforcement Point(PEP)
 	- security control that enforces access policies
 	- Checks for compliance with the security policy before granting access to a resource
 	- acts as a gatekeeper
-- pushing something
+- Indicator of Compromise(IOC)
+	- piece of forensic data that suggests potentially malicious activity on a system or a network
