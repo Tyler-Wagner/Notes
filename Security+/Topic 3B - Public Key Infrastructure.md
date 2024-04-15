@@ -51,4 +51,61 @@
 	- Difficult to validate
 	- Not used to protect critical hosts and applications
 - ==Certificate Signing Requests==
-	- 
+	- Registration is the process by which end users create an account with the CA and become authorized to request certificates.
+	- In the CA's interest to ensure that it only issues certificates to legitimate users
+	- When a someone wants to obtain a certificate
+		- Generates a key pair
+			- public and private
+		- Private key must be kept well protected and known only to the person asking for the certificate
+		- Complete a *Certificate Signing Request* (CSR) and submits to CA
+			- CSR contains the information the person wants to use in the certificate
+		- CA reviews certificate and checks that the information is valid.
+- ==Subject Name Attributes==
+	- *Common Name* (CN) attribute was used to identify the fully qualified domain name which the server is accessed by.
+		- Can contain different kinds of information
+			- makes it difficult for a browser to interpret it correctly
+		- Now deprecated
+	- *Subject Alternative Name* (SAN) field is structured to represent different types of identifiers.
+		- includes DFQDN and IP addresses
+		- Also allows a certificate to represent different subdomains
+		- *Wildcard domain* means that the certificate issued to the parent domain will be accepted as valid for all subdomains
+			- not safe because you can register a domain under something and bimbimbambam you have the robux issue
+- ==Certificate Revocation== 
+	- Certificate may be revoked or suspended:
+		- Revoked
+			- No longer valid and cannot be un-revoked or reinstated
+		- Suspended
+			- Can be re-enabled
+	- Can be revoked or suspended by the owner or by the CA for many reasons
+		- Private key could have been compromised
+	- Must be a mechanism to inform users whether a certificate is valid, revoked or suspended.
+	- CA must maintain a *Certificate Revocation List* (CRL) 
+		- Has all revoked and suspended certificates
+		- Has the following attributes
+			- **Publish Period**
+				- Date and time it was published
+			- **Distribution Period**
+				- locations where it is published
+			- **Validity Period**
+				- Period which it is considered authoritative
+			- **Signature**
+				- signed by the CA to verify authenticity
+	- Other means of providing up to date info is to check the status of the certificate on an *Online Certificate Status Protocol* (OSCP)
+		- Communicates requested certificates status.
+		- Most can query the certificate database directly and obtain real time status of a certificate
+- ==Key Management==
+	- Refers to operational considerations for the various stages in a key's life cycle
+		- Life cycle might have the following stages
+			- **Key Generation**
+				- Creates an asymmetric key pair or symmetric secret key
+			- **Storage**
+				- Prevents unauthorized access to a private or secret key
+			- **Revocation**
+				- Prevents the use of the key if it is compromised
+			- **Expiration and Renewal**
+				- Gives the certificate a "shelf-life"
+	- Decentralized key management model means that keys are generated and managed directly on the computer or user account that will use the certificate
+		- Does not require special set up
+		- Easy to deploy
+	- Some prefer to centralize key generation and storage using a *key management system*
+	- When an app needs to perform a cryptographic operation it uses the *Key Management Interoperability Protocol*

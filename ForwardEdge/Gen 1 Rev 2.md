@@ -1,4 +1,4 @@
-- **4/4/24 Going over UTSA Findings**
+bn- **4/4/24 Going over UTSA Findings**
 	- 1.2 Initial Results
 		- Vulnerability 1: SSH On Front-End Interfaces
 			- Performed a Nmap TCP service scan on 192.168.0.1
@@ -32,8 +32,7 @@
 				- UTSA
 				- Better version of UDev
 					- Identifies devices by serial numbers, manufactures and even vendor ID
-			- wpa_supplicant
-				- UTSA
+			- wpa_supplicantt50
 				- Wireless authentication
 			- phpfpm
 				- SHSU
@@ -202,3 +201,4 @@
 	- It is possible the board is vulnerable to the exploit, however without being able to directly check it then I cannot confirm or deny the statement.
 		- https://github.com/YuriiCrimson/ExploitGSM/blob/main/README.md
 	- For the rest of today I am going to figure out how to gain access to the boards without using ssh
+	- 
