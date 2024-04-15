@@ -455,4 +455,69 @@
 				- Data is sent over a separate channel originating from the FTP servers port 20
 			- Passive:
 				- The data is sent over a separate channel originating from an FTP client's port above the number 1023
-			- 
+	- ==Simple Mail Transfer Protocol==
+		- Email is one of the most used services on the internet
+			- Various configurations
+				- allow local users to exchange email with each other
+				- Different email servers across the internet
+		- Email over the internet requires the following components:
+			- Mail Submission Agent (MSA)
+				- Simply an email client
+			- Mail Transfer Agent (MTA)
+			- Mail Delivery Agent (MDA)
+			- Mail User Agent (MUA)
+		- We need to follow a protocol to communicate with an HTTP server as well as protocols for MTA and MDA
+			- Simple Mail Transfer Protocol (SMTP)
+			- Post Office Protocol version 3 (POP3)
+			- Internet Message Access Protocol (IMAP)
+		- SMTP is used to communicate with an MTA server
+			- Uses clear text
+			- No encryption
+			- Listens on port 25
+	- ==Post Office Protocol 3 (POP3)==
+		- Used to download the email messages from a Mail Delivery Agent (MDA) server.
+		- Mail client connects to the POP3 server, authenticates, downloads the new email messages
+	- ==Internet Message Access Protocol (IMAP)==
+		- Makes it possible to keep your email synchronized across multiple devices
+		- Default port is 143
+- **Protocols and Servers 2**
+	- ==Sniffing attack==
+		- Refers to using a network packet capture tool to collect information about the target.
+		- A network packet capture can reveal information such as
+			- Content of private messages
+			- login credentials
+		- Multiple programs capable of capturing packets
+			- TCPdump
+				- CLI program
+			- Wireshark
+				- Free open source graphical user interface
+			- Tshark
+				- CLI alternative to wireshark
+	- ==Man-in-the-Middle (MITM)==
+		- Occurs when a victim believes they are communicating with a legitimate destination but is unknowingly communicating with an attacker
+		- Simple to carry out if the two parties do not confirm the authenticity and integrity of each message
+	- ==Transport Layer Security (TLS)==
+		- Standard solution to protect the confidentiality and integrity of the exchanged packets
+			- protect against password sniffing and MITM attacks
+	- ==Secure Shell==
+		- Created to provide a secure way for remote system administration.
+			- lets you securely connect to another system over the network and execute commands on the remote system.
+		- Very reliable for remote administration because the username and password were sent encrypted
+			- All commands are encrypted
+		- Can transfer files using SCP (Secure Copy Protocol)
+	- ==Password Attack==
+		- Authentication can be achieved through on of the following
+			- Something you know
+				- Password or PIN
+			- Something you have
+				- SIM card, RFID card, UDB dongle
+			- Something you are
+				- Fingerprints and iris
+		- Attacks against passwords can be carried out by
+			- Password Guessing
+				- Guessing a password requires some knowledge of the target
+			- Dictionary Attack
+				- Expands on password guessing and attempts to include all valid words in a dictionary or wordlist
+			- Brute Force Attack
+				- Most exhaustive and time consuming
+				- Trying all possible characters and combinations
