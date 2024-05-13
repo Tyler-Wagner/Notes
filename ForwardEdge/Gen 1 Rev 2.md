@@ -1,4 +1,4 @@
-bn- **4/4/24 Going over UTSA Findings**
+- **4/4/24 Going over UTSA Findings**
 	- 1.2 Initial Results
 		- Vulnerability 1: SSH On Front-End Interfaces
 			- Performed a Nmap TCP service scan on 192.168.0.1

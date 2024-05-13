@@ -1,0 +1,47 @@
+- **5/13/24**
+	- Started to check and see if all the normal vulnerabilities are still there
+		- Ports that have been open are still open
+		- Same password for SSH
+			- Meaning the timeout has not been changed
+		- Same packages still installed that shouldn't be there, read earlier reports
+		- Found that the web interfaces that were disabled are now re-enabled on Hub
+			- Terminal
+			- Logs
+			- PFED
+	- Tabs on websites tell you what files you are directly communicating with
+		- Going to attempt to exploit this later on
+	- Initial findings on how the boards work are still being discussed.
+		- New idea is as follows
+			- Inner
+				- incoming layer 3 packets
+				- Could strip them down to layer 2 packets
+					- unsure of this
+				- Sends layer 2 packets to the outer board to be routed to the frontend
+				- In/Out from EUD is Ethernet
+				- In/Out from Outer is a micro-usb serial cable
+			- Outer
+				- Acts as a switch
+				- Could have encryption there
+				- Specifically deals with layer 2 packets
+				- Sends packets where they need to go
+				- In/Out from Inner is a micro-usb serial cable
+			- Frontend
+				- Constructs layer 3 packet to be sent over the network
+				- Sends packets to the Outer board
+				- In/Out from Outer is a ethernet cable
+				- In/Out from Outside network is a micro-usb to ethernet cable
+	- Web Terminal
+		- Bash exploit from previous findings is still a thing
+			- For the love of god fix this, it is a simple config
+		- Login page is /bin/login
+		- Everything is transmitted back to the user in plain text
+	- Firewall
+		- Logs are in /var/log/iptables.log
+	- PFED
+		- Stored in /home/worker-2/status.log
+	- Noticed an issue with the client board where you cannot login or access it unless you do so from its subnet.
+		- Ie Client IP = 192.168.0.2
+			- User IP has to lie within the 0.0-255 subnet
+	- The boards have the tmux package installed
+	- Logs do not show who is connecting to the boards at all
+	- DHCP works, however the boards cannot communicate after being configured with DHCP. 
