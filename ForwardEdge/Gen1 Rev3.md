@@ -44,4 +44,21 @@
 			- User IP has to lie within the 0.0-255 subnet
 	- The boards have the tmux package installed
 	- Logs do not show who is connecting to the boards at all
-	- DHCP works, however the boards cannot communicate after being configured with DHCP. 
+	- DHCP works, however the boards cannot communicate after being configured with DHCP.
+- **5/14/24**
+	- Searched through vulnerabilities
+		- Ubuntu Version
+			- Everything seems to have been patched by the package authors
+		- Nginx
+			- No entry points here
+		- PHP
+			- No entry points here
+	- Reverting back to stopping communications all together
+	- ==Boards==
+		- If you shut down the NID via *sudo shutdown -h now* the NID does not have a way to turn itself back on, much less the board turning the NID back on
+	- ==Web Service==
+		- You can factory reset the things with a basic intruder command
+- **5/15/24**
+	- IP Spoofing
+		- Can disrupt the communication, infact you can even intercept the communication between the two boards as which ever IP you are *NOT* spoofing you can intercept traffic from
+			- Ping the board you are not connected to, it will talk to you for X amount of time
