@@ -62,3 +62,45 @@
 	- IP Spoofing
 		- Can disrupt the communication, infact you can even intercept the communication between the two boards as which ever IP you are *NOT* spoofing you can intercept traffic from
 			- Ping the board you are not connected to, it will talk to you for X amount of time
+- **5/17/24**
+	- Digging further into how the NID and the Inner boards communicate with eachother
+		- Protocol in use is 0x876d
+			- Linked to CISCO's ISL protocol
+			- Used for interconnecting multiple switches and maintaining VLAN information
+		- They are using VLANS to send the frames back and forth
+			- Are they tagging the frames since they are *TECHNICALLY* leaving the VLAN on the single chip
+				- If they are then there are more headers that we need to deal with at some point
+				- If there is a header then it is a 26 byte header which contains a 10-bit VLAN ID
+					- Only added when the frame is destined for a non local network
+		- ISL protocol explains how they are able to advertise a zero lag and basically unlimited throughput on their end
+	- When looking to see if the 8021q module is loaded the returned items were as follows
+		- 8021q
+			- Garp is being used by this
+			- mrp is being used by this
+		- GARP is Gratuitous ARP
+			- Used to check for unused IP Addresses and automatically unassigns IP addresses
+		- MRP is the media redundancy protocol which is used to offload the HW transition of MRP_Test frames
+		- Obviously these are also being used by others HOWEVER they all have to do with layer 2 networking stuff
+	- Many MAC addresses being handed out in wireshark that just dont make sense, need to know what they are.
+		- Lanoptics
+		- DiamondMulti
+		- CentillioNe
+- **5/20/24**
+	- Starting to get more questions as we go further down the layer 2 rabbit hole
+		- Are MAC addresses hard coded into the switches?
+			- If so what is the MAC table storage on the switches
+		- How do the VLANS work
+			- What are the input IP and output IP
+	- We are dealing with 2 "unmanaged", transparent switches
+		- Can also physically connect to it but that is out of scope
+	- Looking into the insallPFED.sh script
+		- Both inner and outer boards have wifi, bt and IPV6 disabled 
+			- Done on install
+		- Inner and Outer both also have "custom" interfaces
+			- Not sure how custom they are but the install script makes them look custom
+		- Only worker 2 is being used
+		- eth0 is the internal interface to outer-INE
+- **5/21/24**
+	- Can still login to reset and logs
+		- tells you to use gui and logs you out but you can still access them which could lead to something.
+	- Devices are vulnerable to terrapin attack
